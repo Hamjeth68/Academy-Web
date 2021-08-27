@@ -50,7 +50,7 @@
                             <div class="col-md-6">
                                 <input id="profession_occupation" type="text"
                                        class="form-control @error('Profession/Occupation') is-invalid @enderror"
-                                       name="profession_occupation" value={{ old('profession_occupation') }} required autocomplete="Profession / Occupation">
+                                       name="profession_occupation" value="{{ old('profession_occupation') }}" required autocomplete="Profession / Occupation">
 
                                 @error('Profession/Occupation')
                                 <span class="invalid-feedback" role="alert">
@@ -66,7 +66,7 @@
 
                             <div class="col-md-6">
                                 <input id="phone" type="number"
-                                       class="form-control @error('phonenumber') is-invalid @enderror" name="phone" value={{ old('phone') }}
+                                       class="form-control @error('phonenumber') is-invalid @enderror" name="phone" value="{{ old('phone') }}"
                                        required autocomplete="PhoneNumber">
 
                                 @error('PhoneNumber')
@@ -83,7 +83,7 @@
 
                             <div class="col-md-6">
                                 <input id="address" type="text"
-                                       class="form-control @error('address') is-invalid @enderror" name="address" value={{ old('address') }}
+                                       class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}"
                                        required autocomplete="address">
 
                                 @error('address')
@@ -100,7 +100,7 @@
 
                             <div class="col-md-6">
                                 <input id="state" type="text"
-                                       class="form-control @error('state') is-invalid @enderror" name="state" value={{ old('state') }} required
+                                       class="form-control @error('state') is-invalid @enderror" name="state" value="{{ old('state') }}" required
                                        autocomplete="state">
 
                                 @error('state')
@@ -116,7 +116,7 @@
                                    class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
 
                         <div class="col-md-6">
-                            <input type="date" id="datepicker" width="270" name="date"  class="form-control" value={{ old('date') }} required />
+                            <input type="date" id="datepicker" width="270" name="date"  class="form-control" value="{{ old('date') }}" required />
                             @error('date')
                             <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
