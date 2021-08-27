@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -41,6 +44,11 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegister()
+    {
+        return view('auth.register');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -64,10 +72,59 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $verification_code = (string) \Illuminate\Support\Str::uuid();
+
+        Mail::send('verify-email-template', ['name'=>$data['name'], 'email' => $data['email'], 'uuid' =>$verification_code], function ($message) use ($data) {
+            $message->to($data['email'])->subject('Student Account Verification');
+        });
+
+        User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'profession_occupation' => $data['profession_occupation'],
+            'date' => $data['date'],
+            'state' => $data['state'],
+            'verification_code' => $verification_code,
+            'user_type' => '1',
         ]);
+    }
+
+    public function studentRegister(Request $request) {
+
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        $data = $request->all();
+        $check = $this->create($data);
+
+        return Redirect::to('/stdlogin')->with('success', 'Account Created successfully, Please Verify Your Email');
+
+    }
+
+    public function verifyUserAccount($verificationCode) {
+
+        $user = User::where('verification_code', $verificationCode)->first();
+
+        if($user != null) {
+            $user->email_verified_at = now();
+            $user->save();
+
+            $admin_email = ['safe.envirouk@gmail.com'];
+
+            Mail::send('admin-email-template', ['name'=> $user->name, 'email' => $user->email,'phone_number' => $user->phone,
+                'state' => $user->state,'profession_occupation' => $user->profession_occupation,'address' => $user->address,'dob' => $user->date], function ($message) use ($admin_email) {
+                $message->to($admin_email)->subject('Student Account Created');
+            });
+            return redirect('/stdlogin')->with('success', 'Account Verified successfully.');
+        }
+
+        return redirect('/stdlogin')->with('error', 'Account Not Verified.');
+
     }
 }

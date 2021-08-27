@@ -2,7 +2,10 @@
 
 
 namespace App\Http\Controllers;
+use App\Models\CurrencyRate;
+use App\Models\Product;
 use App\page;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
@@ -32,5 +35,22 @@ class PageController extends Controller
                 return 'page not found';
             }
         }
+    }
+
+    public function coursePage(Request $request)
+    {
+        $data = Product::all();
+        $rates = CurrencyRate::all();
+
+        return view('home2', ['products' => $data,]);
+    }
+
+    public function courseLawmaPage(Request $request)
+    {
+        $data = Product::all();
+        $rates = CurrencyRate::all();
+
+        return view('lawma', ['products' => $data,]);
+
     }
 }

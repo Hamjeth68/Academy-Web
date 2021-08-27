@@ -103,9 +103,62 @@
             <div class="row mt-4 px-3">
                 <div class="">
                     <p class="text-black-100">
-                        This Academy will offer many diverse professional development courses in the process of developing professional skills and knowledge through interactive, participation-based or independent learning. It enables learners to proactively develop their professional capabilities through certified learning or self-guided learning methods.</p>
+                        This Academy will offer many diverse professional development courses in the process of developing professional skills and knowledge through interactive, participation-based or independent learning. It enables learners to proactively develop their professional capabilities through certified learning or self-guided learning methods.
+                    </p>
+
+                    <p class="text-black-100">
+                        Finding opportunities for every employee to reach their full potential is the most important way we can maximize workforce engagement and retention.
+                    </p>
+
+                    <p class="text-black-100">
+                        Waste Management offers expansive learning and development solutions to meet the development needs of our people, as well as proactively recognizing good work and supporting opportunities for growth and improvement. Our talent management program is designed to reach employees at all levels. Hiring, selecting and developing future leaders, as well as evaluating employees in alignment with our values, is standard across the enterprise.
+                    </p>
+
+                    <p class="text-black-100">
+                        As a result, our numerous programs are equally varied. Training types fall into a few broad categories:
+                    </p>
+
+                     <p class="text-black-100">
+
+•	Compliance training—Required of all employees, such as training on Waste Management’s Code of Conduct and Cybersecurity.
+
+                    </p>
+
+                     <p class="text-black-100">
+
+•	Professional development and leadership training—Often customized and conducted voluntarily as part of an individual’s development plan.
+
+                    </p>
+
+                     <p class="text-black-100">
+
+•	Tailored training for specific jobs—Including collection and fleet operations, post-collection operations and sales.
+
+                    </p>
+
+                     <p class="text-black-100">
+
+•	Safety training—Conducted upon hire and on an ongoing basis, geared toward employees in critical positions such as drivers, fleet technicians, heavy equipment operators and sorters.
+
+                    </p>
+
+                     <p class="text-black-100">
+
+•	Environmental excellence and compliance training—Required of employees in specific roles.
+
+                    </p>
+
+                    <p class="text-black-100">
+                        In addition to training, we manage performance through regular check-in conversations, coaching and feedback, goal-setting and annual performance reviews. Annual evaluations set accountability expectations for employees with the understanding that progress is monitored throughout the year. Talent reviews and succession planning are designed to recognize and reward high-performing and hard-working employees.
+                    </p>
                 </div>
             </div>
+
+             <div class="col-md-12 col-lg-12 d-flex align-items-stretch justify-content-center text-center mb-5 mb-lg-0">
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <img src="{{ asset('img/1024-pixels-wide-by-768.png') }}" class="img-fluid" alt="">
+                    </div>
+                </div>
 
 {{--            <div class="container contact-form">--}}
             <form method="post" class="card mt-3 px-3" style="padding: 20px;">
