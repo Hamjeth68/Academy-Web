@@ -20,6 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test-view', [App\Http\Controllers\HomeController::class, 'testView'])->name('test.view');
 
 Route::get('/stdlogin', [App\Http\Controllers\auth\LoginController::class, 'showLogin']);
 Route::post('/stdlogin', [App\Http\Controllers\auth\LoginController::class, 'studentLogin'])->name('studentLogin');
@@ -101,6 +102,7 @@ Route::get('/inspiring-student',function(){
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/products-test', [App\Http\Controllers\Dashboard\ProductController::class, 'index']);
 
     Route::get('/dashboard/products',function(){
         return view('dashboard.products');
