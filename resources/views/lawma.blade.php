@@ -13,7 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/appFrontend.css') }}" rel="stylesheet">
 
     <!-- Favicons -->
     <link href="{{ asset('img/AcLogo.png') }}" rel="icon">
@@ -80,7 +80,7 @@
     #hero {
         width: 100%;
         height: 125vh;
-        background: url("../img/lawmanewimages/g-21.jpeg") top left;
+        background: url("../img/lama-cover-image.jpg") top left;
         background-size: cover;
         position: relative;
         margin-top: -100px;
@@ -212,6 +212,14 @@
         box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
     }
 
+    select {
+        border: none;
+        font-size: 2.4rem;
+        font-weight: 700;
+        font-family: "Roboto", sans-serif;
+        margin-top: -4px;
+        outline: none;
+    }
 </style>
 
 <body>
@@ -224,9 +232,9 @@
             {{--            <i class="icofont-phone"></i> +1 5589 55488 55--}}
         </div>
         <div class="social-links">
-{{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
-{{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
-{{--            @endif--}}
+            {{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
+            {{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
+            {{--            @endif--}}
             @if(auth()->check() && auth()->user()->user_type !== '1' )
                 <a href="{{url('/dashboard')}}" class="text-black-50 font-weight-bold">Dashboard</a>
             @endif
@@ -412,99 +420,63 @@
         </div>
 
         <div class="row pt-5 mr-0 ml-0">
-
+            @foreach($products as $product)
             <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
-                <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4449.png')}}" style="" class="img-fluid" alt="" srcset="">
-                    <div class="text-con">
-                        <h4>Introduction<span class="greentitle"> to Waste Management</span></h4>
-                        {{--                    <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
-                    </div>
-                </div>
-                <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course1">View Course</button>
-                    {{--                <a href="{{ url('book-now') }}"><button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right" >Pay Here</button></a>--}}
-                </div>
-
-            </div>
-
-            <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
-                <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4448.png')}}" style="" class="img-fluid" alt="" srcset="">
-                    <div class="text-con">
-                        <h4>Hazardous<span class="greentitle"> Waste</span></h4>
-                        {{--                    <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
-                    </div>
-                </div>
-                <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course2">View Course</button>
-                    {{--                <button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button>--}}
-                </div>
-
-            </div>
-
-            <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
-                <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4450.png')}}" style="" class="img-fluid" alt="" srcset="">
-                    <div class="text-con">
-                        <h4>Waste<span class="greentitle"> Legislation</span></h4>
-                        {{--                    <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
-                    </div>
-                </div>
-                <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course3">View Course</button>
-                    {{--                <button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button>--}}
-                </div>
-
-            </div>
-
-            <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down">
-                <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4451.png')}}" style="" class="img-fluid" alt="" srcset="">
-                    <div class="text-con">
-                        <h4>Compliance<span class="greentitle"></span></h4>
-                        {{--                    <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
-                    </div>
-                </div>
-                <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course4">View Course</button>
-                    {{--                <button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button>--}}
-                </div>
-
-            </div>
-
-            <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down">
-                <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4452.png')}}" style="" class="img-fluid" alt="" srcset="">
-                    <div class="text-con">
-                        <h4>Landfill<span class="greentitle"> Management</span></h4>
-                        {{--                    <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
-                    </div>
-                </div>
-                <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course5">View Course</button>
-                    {{--                <button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button>--}}
-                </div>
-
-            </div>
-
-            <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down">
                 <div class="text-on-image-con">
                     <img src="{{asset('img/Group 4453.png')}}" style="" class="img-fluid" alt="" srcset="">
                     <div class="text-con">
-                        <h4>Fire Safety<span class="greentitle"> on Waste Sites</span></h4>
-                        {{--                    <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
+                        <h4>{{ $product->p_title }}<span class="greentitle"></span></h4>
+                        {{-- <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
                     </div>
                 </div>
                 <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course6">View Course</button>
-                    {{--                <button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button>--}}
+                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course-{{ $product->id }}">View Course</button>
+                    {{-- <a href="{{ url('book-now') }}"><button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button></a>--}}
                 </div>
 
             </div>
 
+                <div class="modal fade" id="course-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">{{$product->p_title}}</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Description</h4>
+                                <p>
+                                    {!! $product->p_description !!}
+                                </p>
+                                <div class="row col-lg-6 col-md-auto float-right">
+                                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                                    {{--                                                <select id="forex-rate" name="rate" class="d-inline float-right total" >--}}
+                                    {{--                                                    @foreach($rates as $rate)--}}
+                                    {{--                                                        <option value="{{ $rate->id }}" id="base" name="{{$rate->code}}" class="cur"--}}
+                                    {{--                                                                {{ \Illuminate\Support\Facades\Session::get('currency') === $rate->id ? 'selected' : '' }} }}>{{ $rate->symbol }}</option>--}}
+                                    {{--                                                    @endforeach--}}
+                                    {{--                                                </select>--}}
+                                    <h1 class="float-right px-1" id="forex-amount">£ {{number_format($product->p_amount,2)}}</h1>
+                                    <h1 class="float-right" id="forex-newamount"></h1>
+                                </div>
+                            </div>
+                            <div class="modal-footer col-lg-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))
+                                    <a href="{{ url('/new-user') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
+                                @else
+                                    <a href="{{ url('/enroll') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 
         </div>
+
     </section>
 
 
@@ -845,29 +817,29 @@
             <div class="modal-body">
                 <h4>What this cover</h4>
                 <p>
-                    •	Introduction to the waste industry<br>
-                    •	The circular economy and waste prevention<br>
-                    •	Collection of waste<br>
-                    •	Treatment of bio-degradable waste<br>
-                    •	Recycling<br>
-                    •	Understanding of resource and waste management systems, waste composition,
+                    • Introduction to the waste industry<br>
+                    • The circular economy and waste prevention<br>
+                    • Collection of waste<br>
+                    • Treatment of bio-degradable waste<br>
+                    • Recycling<br>
+                    • Understanding of resource and waste management systems, waste composition,
                     industry best practice and national waste strategies in your day-to day work.<br>
-                    •	How to contribute to your organisation’s compliance with waste legislation including
+                    • How to contribute to your organisation’s compliance with waste legislation including
                     Duty of Care responsibilities and hazardous waste management<br>
-                    •	Options available for the prevention, recovery, reuse, treatment and disposal of waste
+                    • Options available for the prevention, recovery, reuse, treatment and disposal of waste
                     and resources throughout the whole management system<br>
-                    •	The role of the regulator and how effective communication can change behaviour<br>
-                    •	Circular Economy principles<br>
-                    •	Overview of the essential workings of an MRF, End of Life Vehicle Site, and Energy from
+                    • The role of the regulator and how effective communication can change behaviour<br>
+                    • Circular Economy principles<br>
+                    • Overview of the essential workings of an MRF, End of Life Vehicle Site, and Energy from
                     Waste site (depending on the sites visited)<br>
-                    •	Update your knowledge on key industry topics including the waste hierarchy, extended
+                    • Update your knowledge on key industry topics including the waste hierarchy, extended
                     producer responsibility, recycling collections, thermal treatment, landfills, and biological
                     treatment<br>
-                    •	Create your own Circular Economy action plan<br>
-                    •	Waste as a resource<br>
-                    •	The environmental impact of waste<br>
-                    •	The cost effectiveness of managing waste efficiently<br>
-                    •	Understanding and applying the waste hierarchy<br></br>
+                    • Create your own Circular Economy action plan<br>
+                    • Waste as a resource<br>
+                    • The environmental impact of waste<br>
+                    • The cost effectiveness of managing waste efficiently<br>
+                    • Understanding and applying the waste hierarchy<br></br>
                     Who can participate?<br>
                     This course is for anyone new to the waste and resources sector, those currently dealing with
                     their organisation’s waste and resources, and anyone wishing to develop or change their
@@ -875,7 +847,16 @@
                     who need to understand International waste policy.
 
                 </p>
-                <h1 class="float-right">Fee: &#163 40</h1>
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate" name="rate" class="d-inline float-right focus-only">
+                        <option value="0" id="base" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount">99</h1>
+                    <h1 class="float-right" id="forex-newamount"></h1>
+                </div>
             </div>
             <div class="modal-footer col-lg-12">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -906,26 +887,35 @@
             <div class="modal-body">
                 <h4>What this cover</h4>
                 <p>
-                    •	Introduction to Hazardous Waste<br>
-                    •	Types of Hazardous Waste & how to manage effectively<br>
-                    •	Specific regulations relating to the management of hazardous wastes<br>
-                    •	Operational activities for waste producers, carriers, and waste management sites<br>
+                    • Introduction to Hazardous Waste<br>
+                    • Types of Hazardous Waste & how to manage effectively<br>
+                    • Specific regulations relating to the management of hazardous wastes<br>
+                    • Operational activities for waste producers, carriers, and waste management sites<br>
                     identify the impact of hazardous waste regulations on operational activities for
                     producers, carriers, and waste sites<br>
-                    •	Using the various definitions and classifications of hazardous wastes<br>
-                    •	Understand the main hazards and risks associated with the management of industrial
+                    • Using the various definitions and classifications of hazardous wastes<br>
+                    • Understand the main hazards and risks associated with the management of industrial
                     hazardous wastes, including its production, treatment, and disposal<br>
-                    •	Understand the range of technical options available for the effective management of
+                    • Understand the range of technical options available for the effective management of
                     industrial hazardous wastes<br>
-                    •	Main controls on the transport of hazardous waste<br>
-                    •	Understand the effect of the regulations on operational activities for waste producers,
+                    • Main controls on the transport of hazardous waste<br>
+                    • Understand the effect of the regulations on operational activities for waste producers,
                     carriers, and waste management site<br>
-                    •	Understanding and applying the waste hierarchy<br></br>
+                    • Understanding and applying the waste hierarchy<br></br>
                     Who can participate?<br>
                     This course is for anyone new to the waste and resources sector, those currently dealing with their organization’s waste and resources, and anyone wishing to develop or change their career. It is particularly relevant to those in the local authority and private sector and those who need to understand International waste policy
 
                 </p>
-                <h1 class="float-right">Fee: &#163 35</h1>
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate-2" name="rate" class="d-inline float-right">
+                        <option value="0" id="base-2" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount-2">175</h1>
+                    <h1 class="float-right" id="forex-newamount-2"></h1>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -956,20 +946,29 @@
             <div class="modal-body">
                 <h4>What this cover</h4>
                 <p>
-                    •	Key issues in relation to waste definition<br>
-                    •	The practical implications of Duty of Care<br>
-                    •	Implications of environmental permitting<br>
-                    •	Waste controls including waste pre-treatment and waste acceptance criteria<br>
-                    •	Code of practice<br>
-                    •	Required documentation, including waste transfer notes and waste audits<br>
-                    •	Your role and that of others in directing how waste is managed and controlled<br></br>
+                    • Key issues in relation to waste definition<br>
+                    • The practical implications of Duty of Care<br>
+                    • Implications of environmental permitting<br>
+                    • Waste controls including waste pre-treatment and waste acceptance criteria<br>
+                    • Code of practice<br>
+                    • Required documentation, including waste transfer notes and waste audits<br>
+                    • Your role and that of others in directing how waste is managed and controlled<br></br>
 
                     Who can participate?<br>
                     This course is ideal for anyone involved in the production, transport, handling, treatment,
                     control or disposal of waste that needs to understand their duty of care responsibilities and
                     how to comply with waste legislation and the waste code of practice.
                 </p>
-                <h1 class="float-right">Fee: &#163 35</h1>
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate-3" name="rate" class="d-inline float-right">
+                        <option value="0" id="base-3" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount-3">99</h1>
+                    <h1 class="float-right" id="forex-newamount-3"></h1>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -999,14 +998,14 @@
             <div class="modal-body">
                 <h4>What this cover</h4>
                 <p>
-                    •	Identify how key legislation relates to the requirements for waste environmental
+                    • Identify how key legislation relates to the requirements for waste environmental
                     permits<br>
-                    •	The differences between a standard rule and a bespoke permit and how to identify
+                    • The differences between a standard rule and a bespoke permit and how to identify
                     which may apply to your activity<br>
-                    •	Identify when transfer, variation and surrender applications may also be required<br>
-                    •	Understand the relevant parts of the application forms and other information required
+                    • Identify when transfer, variation and surrender applications may also be required<br>
+                    • Understand the relevant parts of the application forms and other information required
                     when submitting applications under the Environmental Permitting Regime<br>
-                    •	Identify appropriate guidance and templates to produce supporting documents as part
+                    • Identify appropriate guidance and templates to produce supporting documents as part
                     of applications<br></br>
 
                     Who can participate?<br>
@@ -1015,7 +1014,16 @@
                     how to comply with waste legislation and the waste code of practice.
 
                 </p>
-                <h1 class="float-right">Fee: &#163 20</h1>
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate-4" name="rate" class="d-inline float-right">
+                        <option value="0" id="base-4" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount-4">20</h1>
+                    <h1 class="float-right" id="forex-newamount-4"></h1>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1046,31 +1054,31 @@
             <div class="modal-body">
                 <h4>What this cover</h4>
                 <p>
-                    •	Understand how and why landfill gas is produced, what effects it can have on the natural and built environment and best practice in managing the gas<br>
-                    •	Confidently, safely and cost-effectively manage and control those aspects of landfill gas<br>
+                    • Understand how and why landfill gas is produced, what effects it can have on the natural and built environment and best practice in managing the gas<br>
+                    • Confidently, safely and cost-effectively manage and control those aspects of landfill gas<br>
                     that you are responsible for, including best practice design, installation, operations and
                     monitoring<br>
-                    •	Compare a full range of different landfill gas management and treatment systems and
+                    • Compare a full range of different landfill gas management and treatment systems and
                     infrastructure and understand their application and opportunities<br>
-                    •	How to safely sample, monitor and obtain data on landfill gas and groundwater<br>
-                    •	Understand monitoring requirements and procedures and choose appropriate
+                    • How to safely sample, monitor and obtain data on landfill gas and groundwater<br>
+                    • Understand monitoring requirements and procedures and choose appropriate
                     monitoring techniques<br>
-                    •	How to use and maintain monitoring equipment<br>
-                    •	Understand the data collected to make decisions and act<br>
-                    •	Explain the basic principles of leachate generation<br>
-                    •	Identify the key contaminants within leachate and the risks that they pose<br>
-                    •	Identify of the most adopted treatment processes and systems in the UK and overseas,
+                    • How to use and maintain monitoring equipment<br>
+                    • Understand the data collected to make decisions and act<br>
+                    • Explain the basic principles of leachate generation<br>
+                    • Identify the key contaminants within leachate and the risks that they pose<br>
+                    • Identify of the most adopted treatment processes and systems in the UK and overseas,
                     including methane stripping, chemical treatment, various biological processes, and
                     polishing processes<br>
-                    •	Be aware of the various options for procurement of leachate treatment plants and key
+                    • Be aware of the various options for procurement of leachate treatment plants and key
                     engineering constraints and construction issues to be considered<br>
-                    •	Identify landfill closure constraints including health, safety and legal issues<br>
-                    •	Hydrology and geotechnical issues within a closed landfill<br>
-                    •	Identify requirements for the closure plan and requirements for proof of stabilization<br>
-                    •	Identify key requirements for post-closure management of sites<br>
-                    •	Prioritize potential options for site development including understanding risks and
+                    • Identify landfill closure constraints including health, safety and legal issues<br>
+                    • Hydrology and geotechnical issues within a closed landfill<br>
+                    • Identify requirements for the closure plan and requirements for proof of stabilization<br>
+                    • Identify key requirements for post-closure management of sites<br>
+                    • Prioritize potential options for site development including understanding risks and
                     requirements for monitoring and the due diligence process<br>
-                    •	Evaluate opportunities for maximizing economic returns from a closed landfill<br></br>
+                    • Evaluate opportunities for maximizing economic returns from a closed landfill<br></br>
 
                     Who can participate?<br>
                     This course is suitable for a wide range of people who have the responsibility for design,
@@ -1080,7 +1088,16 @@
                     treatment system operatives, site managers, specialist services providers, enforcement
                     officers and planners.
                 </p>
-                <h1 class="float-right">Fee: &#163 40</h1>
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate-5" name="rate" class="d-inline float-right">
+                        <option value="0" id="base" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount-5">350</h1>
+                    <h1 class="float-right" id="forex-newamount-5"></h1>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1094,7 +1111,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title" id="exampleModalLabel">Fire Safety on Waste Sites</h3>
+                <h3 class="modal-title" id="exampleModalLabel">Specialist Course</h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -1115,29 +1132,39 @@
             <div class="modal-body">
                 <h4>What this cover</h4>
                 <p>
-                    •	The cost effective & smarter approach of managing waste efficiently<br>
-                    •	Intelligence sharing and how to embed in processes<br>
-                    •	How to use apps/CRMs to improve on data collection and logistics<br>
-                    •	Introduction to new technology that could improve management of waste<br>
-                    •	How to plan and deliver an audit of your waste arising's<br>
-                    •	How to evaluate data from an internal waste audit and identify key findings<br>
-                    •	Identify areas for improvement relating to non-compliance and/or cost savings
+                    • The cost effective & smarter approach of managing waste efficiently<br>
+                    • Intelligence sharing and how to embed in processes<br>
+                    • How to use apps/CRMs to improve on data collection and logistics<br>
+                    • Introduction to new technology that could improve management of waste<br>
+                    • How to plan and deliver an audit of your waste arising's<br>
+                    • How to evaluate data from an internal waste audit and identify key findings<br>
+                    • Identify areas for improvement relating to non-compliance and/or cost savings
                     control how premises and assets are managed, including environmental permits<br>
-                    •	How to recognise offences, take appropriate basic enforcement action such as warnings,
+                    • How to recognise offences, take appropriate basic enforcement action such as warnings,
                     issue statutory notices and gather appropriate evidence to assist in an investigation for a
                     prosecution.<br>
-                    •	Understanding the rules governing an investigation for a prosecution and be able to
+                    • Understanding the rules governing an investigation for a prosecution and be able to
                     carry out simple interviews in their investigations.<br>
-                    •	How to develop some skills in running an investigation and preparing prosecution file<br>
-                    •	Guidance relevant to fire prevention for waste facilities<br>
-                    •	Key responsibilities regarding fire prevention for a responsible/competent person and
+                    • How to develop some skills in running an investigation and preparing prosecution file<br>
+                    • Guidance relevant to fire prevention for waste facilities<br>
+                    • Key responsibilities regarding fire prevention for a responsible/competent person and
                     site managers<br>
-                    •	Causes and consequences of fires within waste and recycling facilities and how these can
+                    • Causes and consequences of fires within waste and recycling facilities and how these can
                     be prevented<br>
-                    •	Know what to consider when creating the plan for your site<br>
+                    • Know what to consider when creating the plan for your site<br>
 
                 </p>
-                <h1 class="float-right">Fee: &#163 35</h1>
+
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate-6" name="rate" class="d-inline float-right">
+                        <option value="0" id="base-6" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount-6">400</h1>
+                    <h1 class="float-right" id="forex-newamount-6"></h1>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1146,6 +1173,80 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="course7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLabel">Fire Safety Course</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Topics</h4>
+                <h5>
+                    Specialist Course (Including Emerging Trends, Corporate Waste Management etc)<br>
+                </h5>
+                <p><strong>
+                        The Fire Safety Course is designed to raise awareness of fire hazards in the workplace and how to act
+                        safely in the event of an emergency fire situation, including selecting and using the correct fire
+                        extinguisher. The course is also designed to train staff in your fire safety procedures.
+                    </strong>
+                </p>
+            </div>
+            <div class="modal-body">
+                <h4>What this cover</h4>
+                <p>
+                    • The cost effective & smarter approach of managing waste efficiently<br>
+                    • Intelligence sharing and how to embed in processes<br>
+                    • How to use apps/CRMs to improve on data collection and logistics<br>
+                    • Introduction to new technology that could improve management of waste<br>
+                    • How to plan and deliver an audit of your waste arising's<br>
+                    • How to evaluate data from an internal waste audit and identify key findings<br>
+                    • Identify areas for improvement relating to non-compliance and/or cost savings
+                    control how premises and assets are managed, including environmental permits<br>
+                    • How to recognise offences, take appropriate basic enforcement action such as warnings,
+                    issue statutory notices and gather appropriate evidence to assist in an investigation for a
+                    prosecution.<br>
+                    • Understanding the rules governing an investigation for a prosecution and be able to
+                    carry out simple interviews in their investigations.<br>
+                    • How to develop some skills in running an investigation and preparing prosecution file<br>
+                    • Guidance relevant to fire prevention for waste facilities<br>
+                    • Key responsibilities regarding fire prevention for a responsible/competent person and
+                    site managers<br>
+                    • Causes and consequences of fires within waste and recycling facilities and how these can
+                    be prevented<br>
+                    • Know what to consider when creating the plan for your site<br>
+                </p>
+                <p>
+                <h6>Who can choose this course? </h6>
+                This course is ideal for anyone interested in understanding how fires start and continue, identify the
+                dangers of fire, understand the effects of fire, know how to react in an emergency, understand when and
+                how to tackle a small fire and understand how to identify and use the correct extinguisher.
+                </p>
+
+                <div class="row col-lg-6 col-md-auto float-right">
+                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                    <select id="forex-rate-6" name="rate" class="d-inline float-right">
+                        <option value="0" id="base-6" selected>&#163</option>
+                        <option value="1.41" name="USD">$</option>
+                        <option value="584.35" name="NGN">&#8358</option>
+                    </select>
+                    <h1 class="float-right px-1" id="forex-amount-6">200</h1>
+                    <h1 class="float-right" id="forex-newamount-6"></h1>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a href="{{ url('book-now') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <div id="preloader"></div>
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 

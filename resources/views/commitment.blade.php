@@ -55,6 +55,38 @@
                     We know that everyday kindnesses, courtesy, respect, tolerance and care towards everyone in our community can make a positive and lasting difference in our society and on the environment.
                     We are environmentally conscious and committed to sustainable growth; greening and earth-friendly initiatives which give back positively to the planet rather than have a harmful impact. More than this, we know that the actions we do today have a ripple effect and impacts on our future.
                 </p>
+
+                <p class="text-black-100">
+                    Social responsibility, sustainability and corporate
+                </p>
+
+                    <p class="text-black-100">
+                        Sustainability is embedded in our research and curriculum across the institution and sustainable practices are embedded within the Academy’s operations and commitments to reduce environmental impacts, achieve economic efficiency, demonstrate social responsibility and enhance student experience.
+                </p>
+
+                    <p class="text-black-100"><B>Sustainability Informs Future Economic Growth</B>
+                </p>
+
+                <p class="text-black-100">
+                    As the world makes the transition to a clean energy future, sustainability is clearly a primary ingredient and priority in driving future economic growth. In fact, the adoption of sustainable measures across industries to reduce carbon emissions can save the global economy an estimated $26 trillion by 2030. The global finance industry needs to contribute.
+                </p>
+
+
+                <p class="text-black-100">
+                    Examining long-term sustainability of money is one way we can contribute. Most currencies today aren’t environmentally friendly, with the production and movement of money contributing to pollution, deforestation and a large carbon footprint.
+                </p>
+
+
+                <p class="text-black-100">
+                    With the degradation of ecosystems, many countries are turning their attention to environmental issues. While governments enforce relevant regulations, industries have started to develop their own codes of conduct, limit the use of chemicals and overhaul manufacturing operations
+                </p>
+
+
+                <p class="text-black-100">
+                    Being into waste management business, our strong technical contribution to industry schemes puts us at the forefront of regulatory changes and trends. With a wide range of assessment, verification and testing solutions, we can help you minimize environmental impact and improve sustainability performance. Our global network of experts enables you to assess the environmental performance of your organization and to check whether it complies with mandatory standards and voluntary industry requirements.
+                </p>
+
+
             </div>
         </div>
 

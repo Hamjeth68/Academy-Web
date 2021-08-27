@@ -11,9 +11,9 @@
             {{--                <option data-symbol="€" data-placeholder="0.00">GBP</option>--}}
             {{--                <option data-symbol="$" data-placeholder="0.00">NGN</option>--}}
             {{--            </select>--}}
-{{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
-{{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
-{{--            @endif--}}
+            {{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
+            {{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
+            {{--            @endif--}}
             @if(auth()->check() && auth()->user()->user_type !== '1' )
                 <a href="{{url('/dashboard')}}" class="text-black-50 font-weight-bold">Dashboard</a>
             @endif

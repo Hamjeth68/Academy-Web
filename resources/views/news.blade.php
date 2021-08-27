@@ -35,8 +35,9 @@
     .text-on-image-con .text-con h4 {
         color: #fff;
     }
-    .custom-btn{
-        width:48%;
+
+    .custom-btn {
+        width: 48%;
         font-size: 14px;
     }
 </style>
@@ -61,7 +62,7 @@
     </div>
 </section><!-- End Hero -->
 
-  <h2> News blade.php Page</h2>
+<h2> News blade.php Page</h2>
 <!-- End #main -->
 
 

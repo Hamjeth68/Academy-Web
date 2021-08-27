@@ -12,6 +12,7 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
+        "stripe/stripe-php": "^7.94",
         "symfony/apache-pack": "^1.0",
         "torann/currency": "^1.1"
     },

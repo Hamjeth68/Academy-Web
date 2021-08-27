@@ -13,7 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/appFrontend.css') }}" rel="stylesheet">
 
     <!-- Favicons -->
     <link href="{{ asset('img/AcLogo.png') }}" rel="icon">
@@ -34,10 +34,17 @@
     <!-- Template Main CSS File -->
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+    <!-- =======================================================
+    * Template Name: BizLand - v1.2.1
+    * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 </head>
 
 <body>
 
+<!-- ======= Top Bar ======= -->
 <div id="topbar" class="d-lg-flex align-items-center fixed-top">
     <div class="container d-flex">
         <div class="contact-info mr-auto">
@@ -50,21 +57,21 @@
             {{--                <option data-symbol="€" data-placeholder="0.00">EUR</option>--}}
             {{--                <option data-symbol="$" data-placeholder="0.00">NGN</option>--}}
             {{--            </select>--}}
-{{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
-{{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
-{{--            @endif--}}
+            {{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
+            {{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
+            {{--            @endif--}}
             @if(auth()->check() && auth()->user()->user_type !== '1' )
-                <a href="{{url('/dashboard')}}" class="text-black-50 font-weight-bold">Dashboard</a>
+                <a href="{{ url('/dashboard')}}" class="text-black-50 font-weight-bold">Dashboard</a>
             @endif
             @if(auth()->check() && auth()->user()->user_type !== '0')
-                <a href="{{url('/stdEdit/'.auth()->user()->id)}}" class="text-black-50 font-weight-bold">Profile</a>
+                <a href="{{ url('/stdEdit/'.auth()->user()->id) }}" class="text-black-50 font-weight-bold">Profile</a>
             @endif
             <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Alumni</a>
             <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Student</a>
 
             @if(auth()->check())
 
-{{--                <a href="{{ route('logout') }}" method="POST" class="text-black-50 font-weight-bold">Logout</a>--}}
+                {{--                <a href="{{ route('logout') }}" method="POST" class="text-black-50 font-weight-bold">Logout</a>--}}
                 <form method="POST" action="{{ route('logout') }}" class="d-inline-block">
 
                     @csrf
@@ -129,17 +136,19 @@
                         {{--                        <li><a href="#">Development</a></li>--}}
                     </ul>
                 </li>
+                @if(!auth()->check())
                 <li class="drop-down"><a href="#">Accounts</a>
                     <ul>
                         {{--                        <li><a href="{{url('/business1')}}">Business Services</a></li>--}}
                         <li><a href="{{url('/stdregister')}}">Create Student</a></li>
-{{--                        <li><a href="{{url('/register')}}">Create Admin</a></li>--}}
+                        {{--                        <li><a href="{{url('/register')}}">Create Admin</a></li>--}}
                         {{--                        <li><a href="{{url('/Research1')}}">Research & Innovation</a></li>--}}
                         {{--                        <li><a href="#">About</a></li>--}}
                         {{--                        <li><a href="#">Continuing Professional</a></li>--}}
                         {{--                        <li><a href="#">Development</a></li>--}}
                     </ul>
                 </li>
+                @endif
                 {{--  <li class="drop-down"><a href="">Support Us</a>
                      <ul>
                          <li><a href="{{url('/donate1')}}">Donate Now</a></li>
@@ -154,7 +163,7 @@
         </nav><!-- .nav-menu -->
 
     </div>
-</header><!-- End Header -->
+</header>
 
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
@@ -163,8 +172,12 @@
         </h1>
 {{--        <h2>Join Our Postgraduate Webinars</h2>--}}
         <div class="d-flex justify-content-center mt-3">
-            <a href="{{ url('book-now') }}" class="btn-get-started">Enroll Now</a>
+            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))
+            <a href="{{ url('/stdlogin') }}" class="btn-get-started">Enroll Now</a>
 {{--            <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox btn-watch-video" data-vbtype="video" data-autoplay="true"> Watch Video <i class="icofont-play-alt-2"></i></a>--}}
+            @else
+            <a href="{{ url('/enroll') }}" class="btn-get-started">Enroll Now</a>
+            @endif
         </div>
     </div>
 </section><!-- End Hero -->

@@ -476,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 95vh;
+  height: 105vh;
   background: url("../img/Group-4454.png") top left;
   background-size: cover;
   position: relative;

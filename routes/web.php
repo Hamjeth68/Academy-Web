@@ -22,14 +22,18 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/test-view', [App\Http\Controllers\HomeController::class, 'testView'])->name('test.view');
 
-Route::get('/stdlogin', [App\Http\Controllers\auth\LoginController::class, 'showLogin']);
-Route::post('/stdlogin', [App\Http\Controllers\auth\LoginController::class, 'studentLogin'])->name('studentLogin');
+Route::get('/stdlogin', [App\Http\Controllers\Auth\LoginController::class, 'showLogin']);
+Route::post('/stdlogin', [App\Http\Controllers\Auth\LoginController::class, 'studentLogin'])->name('studentLogin');
+
+Route::get('/stdregister', [App\Http\Controllers\Auth\RegisterController::class, 'showRegister']);
+Route::post('/stdregister', [App\Http\Controllers\Auth\RegisterController::class, 'studentRegister'])->name('studentRegister');
 //Route::get('/stdlogout', [App\Http\Controllers\auth\LoginController::class, 'Logout'])->name('logout');
 
+Route::get('/verifyUser/{uuid}', [App\Http\Controllers\Auth\RegisterController::class,'verifyUserAccount'])->name('verify-user');
 
-Route::get('/home-two',function(){
-return view('home2');
-});
+Route::get('/home-two', [App\Http\Controllers\PageController::class, 'coursePage']);
+Route::get('/lawma1', [App\Http\Controllers\PageController::class, 'courseLawmaPage']);
+
 
 Route::get('/why1',function(){
 return view('why');
@@ -42,11 +46,6 @@ return view('webinars');
 Route::get('/contact1',function(){
 return view('contact');
 });
-
-Route::get('/lawma1',function(){
-return view('lawma');
-});
-
 
 Route::get('/news1',function(){
 return view('news');
@@ -119,6 +118,27 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard/profile',function(){
         return view('dashboard.profile');
     });
+
+});
+
+//student auth pages
+Route::middleware('auth')->group(function () {
+
+    Route::get('/stdEdit/{id}', [App\Http\Controllers\Auth\LoginController::class,'editStudent']);
+    Route::post('/stdUpdate/{id}', [App\Http\Controllers\Auth\LoginController::class,'updateStudent']);
+    Route::post('/stdUpdatePassword/{id}', [App\Http\Controllers\Auth\LoginController::class,'updateStudentPassword']);
+
+    Route::get('/enroll', [App\Http\Controllers\ProductController::class,'index'])->middleware('student');
+    Route::get('/addtocart/{id}', [App\Http\Controllers\ProductController::class,'getAddToCart']);
+    Route::get('/removeProduct/{id}', [App\Http\Controllers\ProductController::class,'removeProduct']);
+    Route::get('/cart', [App\Http\Controllers\ProductController::class,'getCart']);
+    Route::get('/clearCart', [App\Http\Controllers\ProductController::class,'clearSessionCart']);
+
+    Route::get('checkout',[App\Http\Controllers\CheckoutController::class, 'checkout']);
+    Route::post('checkout',[App\Http\Controllers\CheckoutController::class,'afterpayment'])->name('credit-card');
+
+    Route::get('/afterCheckout', [App\Http\Controllers\ProductController::class,'checkOut']);
+
 
 });
 
