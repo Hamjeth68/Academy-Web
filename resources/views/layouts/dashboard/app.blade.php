@@ -24,9 +24,15 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+    @include('layouts.dashboard.sidenav')
+</aside>
 
-    @extends('layouts.dashboard.sidenav')
-    {{-- @extends('layouts.dashboard.header') --}}
+<main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
+    @include('layouts.dashboard.header')
+    @yield('content')
+</main>
+
     <!--   Core JS Files   -->
     <script src={{ asset('js/core/popper.min.js') }}></script>
     <script src={{ asset('js/core/bootstrap.min.js') }}></script>
@@ -216,6 +222,6 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src={{ asset('js/soft-ui-dashboard.min.js?v=1.0.3') }}></script>
-{{-- </body>
+ </body>
 
-</html> --}}
+</html>
