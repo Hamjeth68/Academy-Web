@@ -101,17 +101,25 @@ Route::get('/inspiring-student',function(){
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
-
+    
+    //products
     Route::get('/dashboard/products',function(){
         return view('dashboard.products');
     });
+    Route::post('/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
+
+    //currency
     Route::get('/dashboard/currency',function(){
         return view('dashboard.currency');
     });
+    
+    //purchases
     Route::get('/dashboard/purchased',function(){
         return view('dashboard.purchased');
     });
+    Route::get('/purchases/list', [App\Http\Controllers\Dashboard\PurchaseController::class, 'index']);
+    
+    //uses
     Route::get('/dashboard/users',function(){
         return view('dashboard.users');
     });
