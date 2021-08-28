@@ -1,16 +1,19 @@
 @extends('layouts.dashboard.app')
 
-<table class="table table-hover">
-    <thead>
+@section('content')
+<div class="container-fluid py-4">
+    <table class="table table-hover">
+        <thead>
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Address</th>
             <th>Phone</th>
         </tr>
-    </thead>
-</table>
-</main>
+        </thead>
+    </table>
+</div>
+@endsection
 <script>
     $.ajaxSetup({
         headers: {
@@ -18,4 +21,5 @@
         }
     });
 </script>
-{{-- @extends('layouts.dashboard.footer') --}}
+
+
