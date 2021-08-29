@@ -55,7 +55,7 @@
                                 class="col-md-4 col-form-label text-md-right">{{ __('Product Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="p_description" type="email"
+                                <input id="p_description" type="text"
                                     class="form-control @error('p_description') is-invalid @enderror" name="p_description"
                                     required autocomplete="Product Description">
 
