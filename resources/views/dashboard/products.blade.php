@@ -1,16 +1,15 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#addProduct">Add Products
-    </button>
+    <a type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Products
+    </a>
 
     <a href="{{ url('/products/pdf') }}">
         <button type="submit" class="btn btn-primary">
             {{ __('Export PDF') }}
         </button>
     </a>
-    <div class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-        aria-hidden="true" id="addProduct">
+    <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="card-body">
