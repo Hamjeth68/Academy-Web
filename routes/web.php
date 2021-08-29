@@ -113,9 +113,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
      //purchases
     Route::get('/dashboard/purchased', [App\Http\Controllers\Dashboard\PurchaseController::class, 'index']);
     Route::get('/purchases/pdf', [App\Http\Controllers\Dashboard\PurchaseController::class, 'createPDF']);
+    Route::get('/purchases/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthluSum']);
+
     
     //uses
     Route::get('/dashboard/users', [App\Http\Controllers\Dashboard\UserController::class, 'index']);
+    Route::get('/users/pdf', [App\Http\Controllers\Dashboard\UserController::class, 'createPDF']);
 
     Route::get('/dashboard/profile',function(){
         return view('dashboard.profile');
