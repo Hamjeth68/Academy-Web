@@ -103,26 +103,20 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
     
     //products
-    Route::get('/dashboard/products',function(){
-        return view('dashboard.products');
-    });
-    Route::post('/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
+    Route::get('/dashboard/products', [App\Http\Controllers\Dashboard\ProductController::class, 'index']);
+    Route::post('/dashboard/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
+    Route::get('/products/pdf', [App\Http\Controllers\Dashboard\ProductController::class, 'createPDF']);
 
     //currency
-    Route::get('/dashboard/currency',function(){
-        return view('dashboard.currency');
-    });
-    
-    //purchases
-    Route::get('/dashboard/purchased',function(){
-        return view('dashboard.purchased');
-    });
-    Route::get('/purchases/list', [App\Http\Controllers\Dashboard\PurchaseController::class, 'index']);
+    Route::get('/dashboard/currency',[App\Http\Controllers\Dashboard\CurrencyRateController::class, 'index']);
+
+     //purchases
+    Route::get('/dashboard/purchased', [App\Http\Controllers\Dashboard\PurchaseController::class, 'index']);
+    Route::get('/purchases/pdf', [App\Http\Controllers\Dashboard\PurchaseController::class, 'createPDF']);
     
     //uses
-    Route::get('/dashboard/users',function(){
-        return view('dashboard.users');
-    });
+    Route::get('/dashboard/users', [App\Http\Controllers\Dashboard\UserController::class, 'index']);
+
     Route::get('/dashboard/profile',function(){
         return view('dashboard.profile');
     });

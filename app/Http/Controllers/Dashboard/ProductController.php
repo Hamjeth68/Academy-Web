@@ -5,17 +5,18 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
-
-
-
+use PDF;
 
 class ProductController extends Controller
 {
+
     public function index()
     {
-        $data = Product::all();
-        // dd($products);
-        return view('dashboard.products', compact('products'));
+        $products = Product::all();
+
+        return view('dashboard.products', [
+            'products' => $products,
+        ]);
     }
 
     public function createProduct(Request $request)
@@ -48,5 +49,19 @@ class ProductController extends Controller
     {
         $data->delete();
         //
+    }
+
+
+    public function createPDF()
+    {
+        // retreive all records from db
+        $data = Product::all();
+
+        // share data to view
+        view()->share('products', $data);
+        $pdf = PDF::loadView('pdf_view', $data);
+
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
     }
 }
