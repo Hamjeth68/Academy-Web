@@ -11,6 +11,7 @@
             "<li style='margin-left: 10px'><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h1'>Heading 1</a></li>" +
             "<li style='margin-left: 10px'><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h2'>Heading 2</a></li>" +
             "<li style='margin-left: 10px'><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h3'>Heading 3</a></li>" +
+            "<li style='margin-left: 10px'><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='h4'>Heading 4</a></li>" +
             "<li style='margin-left: 10px'><a data-wysihtml5-command='formatBlock' data-wysihtml5-command-value='p'>Paragraph</a></li>" +
             "</ul>" +
             "</li>",
@@ -81,6 +82,7 @@
         parserRules: {
             tags: {
                 "b":  {},
+                "p":  {},
                 "i":  {},
                 "br": {},
                 "ol": {},
@@ -88,6 +90,8 @@
                 "li": {},
                 "h1": {},
                 "h2": {},
+                "h3": {},
+                "h4": {},
                 "u": 1,
                 "img": {
                     "check_attributes": {

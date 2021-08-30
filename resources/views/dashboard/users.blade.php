@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-
+    <h2 class="font-weight-bolder mb-3">Users</h2>
     <a href="{{ url('/products/pdf') }}">
         <button type="submit" class="btn btn-primary">
             {{ __('Export PDF') }}

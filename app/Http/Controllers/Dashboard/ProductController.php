@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
 
@@ -14,6 +15,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('dashboard.products', [
             'products' => $products,
         ]);

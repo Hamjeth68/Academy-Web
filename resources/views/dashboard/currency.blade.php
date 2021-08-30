@@ -1,6 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
+    <h2 class="font-weight-bolder mb-3">Currency</h2>
     <table class="table-auto-w-full">
         <thead>
             <tr>
