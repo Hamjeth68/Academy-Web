@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\CoursePurchased;
 use Illuminate\Http\Request;
 use PDF;
+use Carbon\Carbon;
+use DateTime;
 
 class PurchaseController extends Controller
 {
@@ -31,14 +33,12 @@ class PurchaseController extends Controller
         return $pdf->download('pdf_file.pdf');
     }
 
-
-    public function getMonthluSum()
+    public function getMonthlySum(Carbon $date)
     {
-        $year = null;
-        $month = null;
-
+        $year = $date->year;
+        $month = $date->month;
         $posts = CoursePurchased::whereYear('created_at', '=', $year)
-            ->whereMonth('created_at', '=', $month)
+            ->whereMonth('created_at', '=',   $month)
             ->get();
         // $totalcost = collect($posts['items']->product->p_amount)->sum();
         // dd($totalcost);

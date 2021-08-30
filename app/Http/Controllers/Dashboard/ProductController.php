@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use PDF;
 
 class ProductController extends Controller
@@ -21,6 +22,7 @@ class ProductController extends Controller
 
     public function createProduct(Request $request)
     {
+        // dd($request);
         $request->validate([
             'p_title' => 'required|max:191|string',
             'p_name' => 'required|max:191|string',
@@ -28,21 +30,28 @@ class ProductController extends Controller
             'p_amount' =>  'numeric',
         ]);
 
-        $data = $request->all();
-        $val = $this->create($data);
+        Product::create([
+            'p_title' => $request->p_title,
+            'p_name' => $request->p_name,
+            'p_description' => $request->p_description,
+            'p_amount' => $request->p_amount,
+        ]);
+        return Redirect::to('/dashboard/products')->with('success', 'Product Created successfully');
     }
 
-    public function updateProduct(Request $request, $id)
+    public function updateProduct(Request $request, Product $products)
     {
-        $data = Product::find((int) $id);
+        $request->validate([
+            'p_title' => 'required',
+            'p_name' => 'required',
+            'p_description' => 'required',
+            'p_amount' =>  'numeric',
+        ]);
 
-        $data->p_title = $request->input('p_title');
-        $data->p_name = $request->input('p_name');
-        $data->p_description = $request->input('p_description');
-        $data->p_amount = $request->input('p_amount');
+        $products->update($request->all());
 
-        $data->update();
-        return $data;
+        return redirect()->to('/dashboard/products');
+
     }
 
     public function deletePrdoct(Product $data)

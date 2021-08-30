@@ -1,7 +1,8 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    <a type="button"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Products
+
+    <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Products
     </a>
 
     <a href="{{ url('/products/pdf') }}">
@@ -9,7 +10,8 @@
             {{ __('Export PDF') }}
         </button>
     </a>
-    <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="card-body">
@@ -54,9 +56,10 @@
                                 class="col-md-4 col-form-label text-md-right">{{ __('Product Description') }}</label>
 
                             <div class="col-md-6">
-                                <input id="p_description" type="text"
+                                <textarea id="p_description" type="text"
                                     class="form-control @error('p_description') is-invalid @enderror" name="p_description"
                                     required autocomplete="Product Description">
+                                                                                            </textarea>
 
                                 @error('p_description')
                                     <span class="invalid-feedback" role="alert">
@@ -96,6 +99,108 @@
             </div>
         </div>
     </div>
+
+
+    <div>
+        @foreach ($products as $product)
+            <div class="modal fade" id="editProduct{{ $product->id }}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="card-body">
+                            <form action="{{ route('edit.products', $product->id) }}"
+                                class="contact100-form validate-form" method="post">
+                                @csrf
+                                @method('PUT')
+                                <div class="form-group row">
+                                    <label for="p_title"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Product Title') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="p_title" type="text"
+                                            class="form-control  @error('p_title') is-invalid @enderror" name="p_title"
+                                            value="{{ old('p_title', $product->p_title) }}" required
+                                            autocomplete="Product Title" autofocus>
+
+                                        @error('p_title')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="p_name"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="p_name" type="text"
+                                            class="form-control @error('p_name') is-invalid @enderror" name="p_name"
+                                            value="{{ old('p_name', $product->p_name) }}" required
+                                            autocomplete="Product Name">
+
+                                        @error('p_name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="p_description"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Product Description') }}</label>
+
+                                    <div class="col-md-6">
+                                        <textarea id="p_description" type="text"
+                                            class="form-control @error('p_description') is-invalid @enderror"
+                                            name="p_description" required autocomplete="Product Description">{{ $product->p_description }}
+                                                                                            </textarea>
+
+                                        @error('p_description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="p_amount"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Product Amount') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="p_amount" type="number"
+                                            class="form-control @error('p_amount') is-invalid @enderror" name="p_amount"
+                                            value="{{ old('p_amount', $product->p_amount) }}" required
+                                            autocomplete="Product Amount">
+
+                                        @error('PhoneNumber')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Save') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+
     <table class="table-auto-w-full">
         <thead>
             <tr>
@@ -130,7 +235,8 @@
                     <td class="border px-4 py-2">{{ $product->p_amount }}</td>
                     <td class="border px-4 py-2">
                         <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
+                            <button class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#editProduct{{ $product->id }}" type="button">
                                 {{ __('Edit Product') }}
                             </button>
 
