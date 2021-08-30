@@ -58,8 +58,12 @@
                             <div class="col-md-6">
                                 <textarea id="p_description" type="text"
                                     class="form-control @error('p_description') is-invalid @enderror" name="p_description"
+<<<<<<< HEAD
                                     required autocomplete="Product Description">
                                                                                                                                     </textarea>
+=======
+                                    required autocomplete="Product Description"></textarea>
+>>>>>>> 696de264772ac5a85037d1bf234591d69993d7c6
 
                                 @error('p_description')
                                     <span class="invalid-feedback" role="alert">
@@ -154,10 +158,17 @@
 
                                     <div class="col-md-6">
                                         <textarea id="p_description" type="text"
+<<<<<<< HEAD
                                             class="form-control @error('p_description') is-invalid @enderror"
                                             name="p_description" required
                                             autocomplete="Product Description">{ !! $product->p_description !! }
                                                                                                                                     </textarea>
+=======
+                                            class="form-control @error('p_description') is-invalid @enderror p_description" id="p_description" style="height: 300px; width: 430px"
+                                            name="p_description" required autocomplete="Product Description" value="{{$product->p_description}}">
+                                            {{$product->p_description}}
+                                        </textarea>
+>>>>>>> 696de264772ac5a85037d1bf234591d69993d7c6
 
                                         @error('p_description')
                                             <span class="invalid-feedback" role="alert">
@@ -258,6 +269,7 @@
     </table>
     </div>
 @endsection
+
 {{-- <script>
     $.ajaxSetup({
         headers: {

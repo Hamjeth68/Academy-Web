@@ -14,7 +14,6 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-
         return view('dashboard.products', [
             'products' => $products,
         ]);
@@ -39,8 +38,9 @@ class ProductController extends Controller
         return Redirect::to('/dashboard/products')->with('success', 'Product Created successfully');
     }
 
-    public function updateProduct(Request $request, Product $products)
+    public function updateProduct(Request $request, $id)
     {
+//        dd($request->all());
         $request->validate([
             'p_title' => 'required',
             'p_name' => 'required',
@@ -48,7 +48,16 @@ class ProductController extends Controller
             'p_amount' =>  'numeric',
         ]);
 
-        $products->update($request->all());
+        $products = Product::where('id', $id)->first();
+
+        $data = ([
+            'p_title' => $request->p_title,
+            'p_name' => $request->p_name,
+            'p_description' =>$request->p_description,
+            'p_amount' => $request->p_amount,
+        ]);
+
+        $products->update($data);
 
         return redirect()->to('/dashboard/products');
     }

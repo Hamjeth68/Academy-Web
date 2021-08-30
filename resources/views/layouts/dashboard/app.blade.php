@@ -20,6 +20,7 @@
     <link href={{ asset('css/nucleo-svg.css') }} rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href={{ asset('css/soft-ui-dashboard.css?v=1.0.3') }} rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="https://jhollingworth.github.io/bootstrap-wysihtml5//src/bootstrap-wysihtml5.css">
 
 
 </head>
@@ -40,6 +41,17 @@
     <script src={{ asset('js/plugins/perfect-scrollbar.min.js') }}></script>
     <script src={{ asset('js/plugins/smooth-scrollbar.min.js') }}></script>
     <script src={{ asset('js/plugins/chartjs.min.js') }}></script>
+<script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/wysihtml5-0.3.0.js"></script>
+<script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/jquery-1.7.2.min.js"></script>
+<script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/prettify.js"></script>
+<script src="https://jhollingworth.github.io/bootstrap-wysihtml5//lib/js/bootstrap.min.js"></script>
+{{--<script src="https://jhollingworth.github.io/bootstrap-wysihtml5//src/bootstrap-wysihtml5.js"></script>--}}
+<script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.p_description').wysihtml5();
+    });
+</script>
     <script>
         var ctx = document.getElementById("chart-bars").getContext("2d");
 

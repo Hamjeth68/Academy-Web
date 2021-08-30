@@ -3561,8 +3561,8 @@ fieldset:disabled .btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #cb0c9f;
-  border-color: #cb0c9f;
+  background-color: #66d432;
+  border-color: #66d432;
 }
 
 .btn-primary:hover {
@@ -18919,8 +18919,8 @@ fieldset:disabled .btn {
 
 .btn-primary:hover,
 .btn.bg-gradient-primary:hover {
-  background-color: #cb0c9f;
-  border-color: #cb0c9f;
+    background-color: #a7e05e;
+    border-color: #82d616;
 }
 
 .btn-primary .btn.bg-outline-primary,
@@ -21624,7 +21624,7 @@ hr.horizontal.gray-light {
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon {
-  background-image: linear-gradient(310deg, #cb0c9f 0%, #cb0c9f 100%);
+  background-image: linear-gradient(310deg, #66d432 0%, #66d432 100%);
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon svg .color-background,
