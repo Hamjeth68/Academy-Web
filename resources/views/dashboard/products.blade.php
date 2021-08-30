@@ -59,7 +59,7 @@
                                 <textarea id="p_description" type="text"
                                     class="form-control @error('p_description') is-invalid @enderror" name="p_description"
                                     required autocomplete="Product Description">
-                                                                                            </textarea>
+                                                                                                </textarea>
 
                                 @error('p_description')
                                     <span class="invalid-feedback" role="alert">
@@ -156,8 +156,8 @@
                                     <div class="col-md-6">
                                         <textarea id="p_description" type="text"
                                             class="form-control @error('p_description') is-invalid @enderror"
-                                            name="p_description" required autocomplete="Product Description">{{ $product->p_description }}
-                                                                                            </textarea>
+                                            name="p_description" required autocomplete="Product Description">{ !! $product->p_description !! }
+                                                                                                </textarea>
 
                                         @error('p_description')
                                             <span class="invalid-feedback" role="alert">
