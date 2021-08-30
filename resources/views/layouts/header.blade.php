@@ -22,6 +22,9 @@
             @endif
             <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Alumni</a>
             <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Student</a>
+            @if(!auth()->check())
+                <a href="{{url('/stdregister')}}" class="text-black-50 font-weight-bold">Register</a>
+            @endif
             @if(auth()->check())
                 {{--            <a href="{{ route('logout') }}" method="POST" class="text-black-50 font-weight-bold">Logout--}}
                 <form method="POST" action="{{ route('logout') }}" class="d-inline-block">
@@ -92,19 +95,19 @@
                         {{--                        <li><a href="#">Development</a></li>--}}
                     </ul>
                 </li>
-                @if(!auth()->check())
-                    <li class="drop-down"><a href="#">Accounts</a>
-                        <ul>
-                            {{--                        <li><a href="{{url('/business1')}}">Business Services</a></li>--}}
-                            <li><a href="{{url('/stdregister')}}">Create Student</a></li>
-                            {{--                        <li><a href="{{url('/register')}}">Create Admin</a></li>--}}
-                            {{--                        <li><a href="{{url('/Research1')}}">Research & Innovation</a></li>--}}
-                            {{--                        <li><a href="#">About</a></li>--}}
-                            {{--                        <li><a href="#">Continuing Professional</a></li>--}}
-                            {{--                        <li><a href="#">Development</a></li>--}}
-                        </ul>
-                    </li>
-                @endif
+{{--                @if(!auth()->check())--}}
+{{--                    <li class="drop-down"><a href="#">Accounts</a>--}}
+{{--                        <ul>--}}
+{{--                            --}}{{--                        <li><a href="{{url('/business1')}}">Business Services</a></li>--}}
+{{--                            <li><a href="{{url('/stdregister')}}">Create Student</a></li>--}}
+{{--                            --}}{{--                        <li><a href="{{url('/register')}}">Create Admin</a></li>--}}
+{{--                            --}}{{--                        <li><a href="{{url('/Research1')}}">Research & Innovation</a></li>--}}
+{{--                            --}}{{--                        <li><a href="#">About</a></li>--}}
+{{--                            --}}{{--                        <li><a href="#">Continuing Professional</a></li>--}}
+{{--                            --}}{{--                        <li><a href="#">Development</a></li>--}}
+{{--                        </ul>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
                 {{-- <li class="drop-down"><a href="">Support Us</a>
                     <ul>
                         <li><a href="{{url('/donate1')}}">Donate Now</a></li>
