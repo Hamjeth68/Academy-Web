@@ -59,7 +59,7 @@
                                 <textarea id="p_description" type="text"
                                     class="form-control @error('p_description') is-invalid @enderror" name="p_description"
                                     required autocomplete="Product Description">
-                                                                                                </textarea>
+                                                                                                                                    </textarea>
 
                                 @error('p_description')
                                     <span class="invalid-feedback" role="alert">
@@ -99,7 +99,6 @@
             </div>
         </div>
     </div>
-
 
     <div>
         @foreach ($products as $product)
@@ -156,8 +155,9 @@
                                     <div class="col-md-6">
                                         <textarea id="p_description" type="text"
                                             class="form-control @error('p_description') is-invalid @enderror"
-                                            name="p_description" required autocomplete="Product Description">{ !! $product->p_description !! }
-                                                                                                </textarea>
+                                            name="p_description" required
+                                            autocomplete="Product Description">{ !! $product->p_description !! }
+                                                                                                                                    </textarea>
 
                                         @error('p_description')
                                             <span class="invalid-feedback" role="alert">
@@ -241,11 +241,16 @@
                             </button>
 
                         </div>
-                        <div class="col-md-6 offset-md-4">
-                            <button type="submit" class="btn btn-primary">
-                                {{ __('Delete Product') }}
-                            </button>
-                        </div>
+                        <form action="{{ route('delete.product', $product->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Delete Product') }}
+                                </button>
+                            </div>
+                        </form>
+
                     </td>
                 </tr>
             @endforeach

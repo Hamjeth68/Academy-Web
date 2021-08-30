@@ -107,6 +107,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/dashboard/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
     Route::get('/products/pdf', [App\Http\Controllers\Dashboard\ProductController::class, 'createPDF']);
     Route::put('/products/{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'updateProduct'])->name('edit.products');
+    Route::delete('/products/delete{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'deletePrdoct'])->name('delete.product');
+
     
 
     //currency

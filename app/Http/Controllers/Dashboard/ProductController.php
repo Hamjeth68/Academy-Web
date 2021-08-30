@@ -51,13 +51,16 @@ class ProductController extends Controller
         $products->update($request->all());
 
         return redirect()->to('/dashboard/products');
-
     }
 
-    public function deletePrdoct(Product $data)
+    public function deletePrdoct(Product $data, $id)
     {
-        $data->delete();
-        //
+        $data = Product::find($id);
+        if ($data->delete()) {
+            return redirect()->to('/dashboard/products');
+        } else {
+            return redirect()->to('/dashboard/products')->with('error');
+        }
     }
 
 
