@@ -1,7 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-
+    <h2 class="font-weight-bolder mb-3">Products</h2>
     <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Products
     </a>
 
@@ -238,7 +238,7 @@
                     <td class="border px-4 py-2"> {!! $product->p_description !!}</td>
                     <td class="border px-4 py-2">{{ $product->p_amount }}</td>
                     <td class="border px-4 py-2">
-                        <div class="col-md-6 offset-md-4">
+                        <div class="col-md-6">
                             <button class="btn btn-primary" data-bs-toggle="modal"
                                 data-bs-target="#editProduct{{ $product->id }}" type="button">
                                 {{ __('Edit Product') }}
@@ -248,7 +248,7 @@
                         <form action="{{ route('delete.product', $product->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Delete Product') }}
                                 </button>

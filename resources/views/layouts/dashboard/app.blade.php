@@ -21,6 +21,7 @@
     <!-- CSS Files -->
     <link id="pagestyle" href={{ asset('css/soft-ui-dashboard.css?v=1.0.3') }} rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://jhollingworth.github.io/bootstrap-wysihtml5//src/bootstrap-wysihtml5.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 
 </head>

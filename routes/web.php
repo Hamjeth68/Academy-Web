@@ -101,7 +101,7 @@ Route::get('/inspiring-student',function(){
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
-    
+
     //products
     Route::get('/dashboard/products', [App\Http\Controllers\Dashboard\ProductController::class, 'index']);
     Route::post('/dashboard/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
@@ -109,7 +109,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/products/{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'updateProduct'])->name('edit.products');
     Route::delete('/products/delete{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'deletePrdoct'])->name('delete.product');
 
-    
+
 
     //currency
     Route::get('/dashboard/currency',[App\Http\Controllers\Dashboard\CurrencyRateController::class, 'index']);
@@ -119,7 +119,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/purchases/pdf', [App\Http\Controllers\Dashboard\PurchaseController::class, 'createPDF']);
     // Route::get('/purchases/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthluSum']);
     Route::get('/product/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthlySum']);
-    
+
     //uses
     Route::get('/dashboard/users', [App\Http\Controllers\Dashboard\UserController::class, 'index']);
     Route::get('/users/pdf', [App\Http\Controllers\Dashboard\UserController::class, 'createPDF']);

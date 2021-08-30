@@ -27,6 +27,7 @@ class PurchaseController extends Controller
 
         // share data to view
         view()->share('course_purchased', $data);
+
         $pdf = PDF::loadView('pdf_view2', $data);
 
         // download PDF file with download method

@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link  active" href={{ url('/dashboard')}}>
+                <a class="nav-link {{ (\Illuminate\Support\Facades\Route::getCurrentRoute()->uri == 'dashboard') ? 'active' : '' }}" href={{ url('/dashboard')}}>
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href={{ url('/dashboard/products')}}>
+                <a class="nav-link {{ (\Illuminate\Support\Facades\Route::getCurrentRoute()->uri == 'dashboard/products') ? 'active' : '' }}" href={{ url('/dashboard/products')}}>
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>office</title>
@@ -48,7 +48,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href={{ url('/dashboard/currency')}}>
+                <a class="nav-link {{ (\Illuminate\Support\Facades\Route::getCurrentRoute()->uri == 'dashboard/currency') ? 'active' : '' }}" href={{ url('/dashboard/currency')}}>
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>credit-card</title>
@@ -68,7 +68,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href={{ url('/dashboard/purchased')}}>
+                <a class="nav-link {{ (\Illuminate\Support\Facades\Route::getCurrentRoute()->uri == 'dashboard/purchased') ? 'active' : '' }}" href={{ url('/dashboard/purchased')}}>
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>box-3d-50</title>
@@ -89,7 +89,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href={{ url('/dashboard/users')}}>
+                <a class="nav-link {{ (\Illuminate\Support\Facades\Route::getCurrentRoute()->uri == 'dashboard/users') ? 'active' : '' }}" href={{ url('/dashboard/users')}}>
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>settings</title>
@@ -113,7 +113,7 @@
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link  " href={{ url('/dashboard/profile')}}>
+                <a class="nav-link {{ (\Illuminate\Support\Facades\Route::getCurrentRoute()->uri == 'dashboard/profile') ? 'active' : '' }}" href={{ url('/dashboard/profile')}}>
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <title>customer-support</title>
