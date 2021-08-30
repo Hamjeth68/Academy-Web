@@ -51,6 +51,6 @@ class PurchaseController extends Controller
                 // 'courses'=>$post->product->p_name,
             );
         }
-        dd($data);
+        // dd($data);
     }
 }
