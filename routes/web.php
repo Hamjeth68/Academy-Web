@@ -123,6 +123,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     //uses
     Route::get('/dashboard/users', [App\Http\Controllers\Dashboard\UserController::class, 'index']);
     Route::get('/users/pdf', [App\Http\Controllers\Dashboard\UserController::class, 'createPDF']);
+    Route::post('/admin/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'updateAdminPassword'])->name('admin.update');
+
+
 
     Route::get('/dashboard/profile',function(){
         return view('dashboard.profile');

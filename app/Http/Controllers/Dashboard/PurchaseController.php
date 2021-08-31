@@ -22,8 +22,31 @@ class PurchaseController extends Controller
 
     public function createPDF()
     {
+        $data = [];
         // retreive all records from db
-        $data = CoursePurchased::all();
+        $course_purchased = CoursePurchased::all();
+
+        $monthName = Carbon::now()->monthName;
+        $year = Carbon::now()->year;
+        $month = Carbon::now()->month;
+        $posts = CoursePurchased::whereYear('created_at', '=', $year)
+            ->whereMonth('created_at', '=',   $month)
+            ->get();
+        // $data = array('course_purchased' => $course_purchased, 'year' => $year, 'month' => $month, '');
+        // $totalcost = collect($posts['items']->product->p_amount)->sum();
+        // dd($totalcost);
+        $toatlData = [];
+        $totalcost = 0;
+        foreach ($posts as $post) {
+            $toatlData = array(
+                $totalcost += $post->product->p_amount,
+                // return $totalcost
+            );
+        }
+
+        // dd($posts);
+
+        $data = array('course_purchased' => $course_purchased, 'year' => $year, 'month' => $monthName, 'totalcost' => $totalcost);
 
         // share data to view
         view()->share('course_purchased', $data);
@@ -46,12 +69,12 @@ class PurchaseController extends Controller
         $data = [];
         $totalcost = 0;
         foreach ($posts as $post) {
-
             $data = array(
                 $totalcost += $post->product->p_amount,
                 // 'courses'=>$post->product->p_name,
             );
         }
+        dd($totalcost);
         return $data;
         // dd($data);
     }
