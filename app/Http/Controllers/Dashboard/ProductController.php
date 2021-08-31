@@ -42,7 +42,7 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, $id)
     {
-//        dd($request->all());
+        //        dd($request->all());
         $request->validate([
             'p_title' => 'required',
             'p_name' => 'required',
@@ -55,7 +55,7 @@ class ProductController extends Controller
         $data = ([
             'p_title' => $request->p_title,
             'p_name' => $request->p_name,
-            'p_description' =>$request->p_description,
+            'p_description' => $request->p_description,
             'p_amount' => $request->p_amount,
         ]);
 
@@ -80,12 +80,12 @@ class ProductController extends Controller
         // retreive all records from db
         $data = Product::all();
 
-        return view('pdf_view')->with('products', $data);
-//        // share data to view
-//        view()->share('products', $data);
-//        $pdf = PDF::loadView('pdf_view', $data)->setOptions(['defaultFont' => 'sans-serif']);
-//
-//        // download PDF file with download method
-//        return $pdf->download('pdf_file.pdf');
+        // return view('pdf_view')->with('products', $data);
+        // share data to view
+        view()->share('products', $data);
+        $pdf = PDF::loadView('pdf_view', $data);
+
+        // download PDF file with download method
+        return $pdf->download('pdf_file.pdf');
     }
 }
