@@ -50,19 +50,34 @@
 </style>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div id="col-lg-10 col-md-9 float-left mt-2">
-                <a href="{{ url('/') }}" class="logo mr-auto ml-3"><img src={{ asset('img/acedemy.png') }}
-                        alt=""></a>
-            </div>
-            <div class="col-lg-10 col-md-9 d-inline-block companyhead mt-2 mr-1">
-                <h3 class=""><strong>Safe Enviro Academy</strong></h3><br>
-                <h5 class="">69/66 Hatton Garden,Fifth Floor Suites 23, <br>
-                    London EC1N 8LE</h5><br>
-                <p class="">SafeEnviro@gmail.com</p>
-            </div>
+{{--    <div class="container-fluid">--}}
+{{--        <header class="row clearfix">--}}
+{{--            <div id="col-lg-7 col-md-7 float-left mt-2">--}}
+{{--                <div id="logo">--}}
+{{--                <a href="{{ url('/') }}" class="logo mr-auto ml-3"><img src={{ asset('img/acedemy.png') }}--}}
+{{--                        alt=""></a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--            <div class="col-lg-5 col-md-5 d-inline-block companyhead mt-2 mr-1">--}}
+{{--                <h3 class=""><strong>Safe Enviro Academy</strong></h3><br>--}}
+{{--                <h5 class="">69/66 Hatton Garden,Fifth Floor Suites 23, <br>--}}
+{{--                    London EC1N 8LE</h5><br>--}}
+{{--                <p class="">SafeEnviro@gmail.com</p>--}}
+{{--            </div>--}}
+{{--        </header>--}}
+<header class="clearfix">
+    <div id="logo">
+        <div>
+            <a href="{{ url('/') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
         </div>
+    </div>
+     <div id="company">
+        <h2 class="name">Company Name</h2>
+        <div>455 Foggy Heights, AZ 85004, US</div>
+        <div>(602) 519-0450</div>
+        <div><a href="mailto:company@example.com">company@example.com</a></div>
+    </div>
+</header>
 
         <hr class="top">
         <main>
@@ -139,7 +154,7 @@
             <strong>Invoice was created on a computer and is valid without the signature and seal.</strong>
         </footer>
 
-    </div>
+{{--    </div>--}}
 </body>
 
 </html>

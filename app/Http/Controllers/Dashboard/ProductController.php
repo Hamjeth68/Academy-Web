@@ -80,11 +80,12 @@ class ProductController extends Controller
         // retreive all records from db
         $data = Product::all();
 
-        // share data to view
-        view()->share('products', $data);
-        $pdf = PDF::loadView('pdf_view', $data);
-
-        // download PDF file with download method
-        return $pdf->download('pdf_file.pdf');
+        return view('pdf_view')->with('products', $data);
+//        // share data to view
+//        view()->share('products', $data);
+//        $pdf = PDF::loadView('pdf_view', $data)->setOptions(['defaultFont' => 'sans-serif']);
+//
+//        // download PDF file with download method
+//        return $pdf->download('pdf_file.pdf');
     }
 }
