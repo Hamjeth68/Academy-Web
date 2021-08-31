@@ -28,7 +28,7 @@ class PurchaseController extends Controller
         // share data to view
         view()->share('course_purchased', $data);
 
-        $pdf = PDF::loadView('pdf_view2', $data);
+        $pdf = PDF::loadView('pdf_view3', $data);
 
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');
@@ -52,6 +52,7 @@ class PurchaseController extends Controller
                 // 'courses'=>$post->product->p_name,
             );
         }
+        return $data;
         // dd($data);
     }
 }

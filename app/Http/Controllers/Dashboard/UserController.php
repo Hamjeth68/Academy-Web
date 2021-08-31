@@ -30,7 +30,7 @@ class UserController extends Controller
 
         // share data to view
         view()->share('user', $data);
-        $pdf = PDF::loadView('pdf_view3', $data);
+        $pdf = PDF::loadView('pdf_view2', $data);
 
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');
