@@ -266,7 +266,6 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
     {{--        <h1 class="logo mr-auto"><a href="index.html">BizLand<span>.</span></a></h1>--}}
     <!-- Uncomment below if you prefer to use an image logo -->
         <a href="{{ url('/') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
@@ -335,6 +334,71 @@
 <main id="main">
 
     <section id="featured-services" class="featured-services">
+        <div class="section-title pt-3">
+            <h3>Our<span> Courses</span></h3>
+        </div>
+
+        <div class="row pt-5 mr-0 ml-0">
+            @foreach($products as $product)
+                <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
+                    <div class="text-on-image-con">
+                        <img src="{{asset('img/Group 4453.png')}}" style="" class="img-fluid" alt="" srcset="">
+                        <div class="text-con">
+                            <h4>{{ $product->p_title }}<span class="greentitle"></span></h4>
+                            {{-- <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
+                        </div>
+                    </div>
+                    <div class="btn-con mt-2" data-aos="flip-up">
+                        <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course-{{ $product->id }}">View Course</button>
+                        {{-- <a href="{{ url('book-now') }}"><button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button></a>--}}
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="course-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">{{$product->p_title}}</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Description</h4>
+                                <p>
+                                    {!! $product->p_description !!}
+                                </p>
+                                <div class="row col-lg-6 col-md-auto float-right">
+                                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                                    {{--                                                <select id="forex-rate" name="rate" class="d-inline float-right total" >--}}
+                                    {{--                                                    @foreach($rates as $rate)--}}
+                                    {{--                                                        <option value="{{ $rate->id }}" id="base" name="{{$rate->code}}" class="cur"--}}
+                                    {{--                                                                {{ \Illuminate\Support\Facades\Session::get('currency') === $rate->id ? 'selected' : '' }} }}>{{ $rate->symbol }}</option>--}}
+                                    {{--                                                    @endforeach--}}
+                                    {{--                                                </select>--}}
+                                    <h1 class="float-right px-1" id="forex-amount">£ {{number_format($product->p_amount,2)}}</h1>
+                                    <h1 class="float-right" id="forex-newamount"></h1>
+                                </div>
+                            </div>
+                            <div class="modal-footer col-lg-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))
+                                    <a href="{{ url('/stdlogin') }}" type="button" class="btn btn-primary">Enroll Now</a>
+                                @else
+                                    <a href="{{ url('/enroll') }}" type="button" class="btn btn-primary">Enroll Now</a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+    </section>
+
+    <section id="featured-services" class="featured-services">
         <div class="container" data-aos="fade-up">
 
             <div class="row">
@@ -370,8 +434,8 @@
             </div>
 
         </div>
-    </section><!-- End Featured Services Section -->
-
+    </section>
+    <!-- End Featured Services Section -->
 
     <!-- ======= Featured Services Section ======= -->
     <section id="featured-services" class="featured-services">
@@ -413,72 +477,6 @@
 
         </div>
     </section>
-
-    <section id="featured-services" class="featured-services">
-        <div class="section-title pt-3">
-            <h3>Our<span> Courses</span></h3>
-        </div>
-
-        <div class="row pt-5 mr-0 ml-0">
-            @foreach($products as $product)
-            <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
-                <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4453.png')}}" style="" class="img-fluid" alt="" srcset="">
-                    <div class="text-con">
-                        <h4>{{ $product->p_title }}<span class="greentitle"></span></h4>
-                        {{-- <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
-                    </div>
-                </div>
-                <div class="btn-con mt-2" data-aos="flip-up">
-                    <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course-{{ $product->id }}">View Course</button>
-                    {{-- <a href="{{ url('book-now') }}"><button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button></a>--}}
-                </div>
-
-            </div>
-
-                <div class="modal fade" id="course-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999;">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h3 class="modal-title" id="exampleModalLabel">{{$product->p_title}}</h3>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <h4>Description</h4>
-                                <p>
-                                    {!! $product->p_description !!}
-                                </p>
-                                <div class="row col-lg-6 col-md-auto float-right">
-                                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
-                                    {{--                                                <select id="forex-rate" name="rate" class="d-inline float-right total" >--}}
-                                    {{--                                                    @foreach($rates as $rate)--}}
-                                    {{--                                                        <option value="{{ $rate->id }}" id="base" name="{{$rate->code}}" class="cur"--}}
-                                    {{--                                                                {{ \Illuminate\Support\Facades\Session::get('currency') === $rate->id ? 'selected' : '' }} }}>{{ $rate->symbol }}</option>--}}
-                                    {{--                                                    @endforeach--}}
-                                    {{--                                                </select>--}}
-                                    <h1 class="float-right px-1" id="forex-amount">£ {{number_format($product->p_amount,2)}}</h1>
-                                    <h1 class="float-right" id="forex-newamount"></h1>
-                                </div>
-                            </div>
-                            <div class="modal-footer col-lg-12">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))
-                                    <a href="{{ url('/new-user') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
-                                @else
-                                    <a href="{{ url('/enroll') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
-        </div>
-
-    </section>
-
 
     <!-- ======= About Section ======= -->
     <section id="about" class="about section-bg">

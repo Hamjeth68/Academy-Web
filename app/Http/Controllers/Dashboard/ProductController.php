@@ -79,11 +79,9 @@ class ProductController extends Controller
     {
         // retreive all records from db
         $data = Product::all();
-
-        // return view('pdf_view')->with('products', $data);
         // share data to view
         view()->share('products', $data);
-        $pdf = PDF::loadView('pdf_view', $data);
+        $pdf = PDF::loadView('pdf_view', $data)->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])->setPaper('A4', 'Landscape');
 
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');

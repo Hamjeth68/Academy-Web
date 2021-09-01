@@ -136,9 +136,9 @@
                             <div class="modal-footer col-lg-12">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                 @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))
-                                    <a href="{{ url('/new-user') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
+                                    <a href="{{ url('/stdlogin') }}" type="button" class="btn btn-primary">Enroll Now</a>
                                 @else
-                                    <a href="{{ url('/enroll') }}"><button type="button" class="btn btn-primary">Enroll Now</button></a>
+                                    <a href="{{ url('/enroll') }}" type="button" class="btn btn-primary">Enroll Now</a>
                                 @endif
                             </div>
                         </div>

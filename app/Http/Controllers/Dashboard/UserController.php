@@ -28,11 +28,12 @@ class UserController extends Controller
         // retreive all records from db
         $data = User::all();
 
-        // share data to view
-        view()->share('user', $data);
-        $pdf = PDF::loadView('pdf_view2', $data);
 
-        // download PDF file with download method
+        // share data to view
+        view()->share('users', $data);
+        $pdf = PDF::loadView('pdf_view2', $data)->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])->setPaper('A4', 'Landscape');
+
+        // download PDF file with download metho
         return $pdf->download('pdf_file.pdf');
     }
 
