@@ -268,8 +268,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
 </div>
 
 <!-- ======= Header ======= -->
@@ -327,7 +325,6 @@
                 </li>
             </ul>
         </nav><!-- .nav-menu -->
->>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
@@ -398,9 +395,6 @@
         </div>
     </section><!-- End Hero -->
 
-<<<<<<< HEAD
-    <main id="main">
-=======
     <section id="featured-services" class="featured-services">
         <div class="section-title pt-3">
             <h3>Our<span> Courses</span></h3>
@@ -468,7 +462,6 @@
 
     <section id="featured-services" class="featured-services">
         <div class="container" data-aos="fade-up">
->>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
         <section id="featured-services" class="featured-services">
             <div class="section-title pt-3">
@@ -535,15 +528,9 @@
                     </div>
                 @endforeach
 
-<<<<<<< HEAD
-            </div>
-
-        </section>
-=======
         </div>
     </section>
     <!-- End Featured Services Section -->
->>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
         <section id="featured-services" class="featured-services">
             <div class="container" data-aos="fade-up">
@@ -628,210 +615,9 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div
-                        class="col-md-4 col-lg-3 d-flex align-items-stretch justify-content-center text-center mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="flip-left" data-aos-delay="300">
-                            <div class="icon"><img class="Card-lawimg" src={{ asset('img/portal/Career.jpg') }}
-                                    alt="" style="margin-left: -15px;"></div>
-                            <h3 class="title-lawma">Career Support</h3>
-                            <p class="lawma-para">Planning a career! Once you got it your higher education qualification
-                                could open up plenty of career options</p>
-                        </div>
-                    </div>
-
-                    <div
-                        class="col-md-4 col-lg-3 d-flex align-items-stretch justify-content-center text-center mb-5 mb-lg-0">
-                        <div class="icon-box" data-aos="flip-left" data-aos-delay="300">
-                            <div class="icon"><img class="Card-lawimg"
-                                    src={{ asset('img/portal/International.png') }} alt=""
-                                    style="margin-left: -15px;"></div>
-                            <h3 class="title-lawma">International Recognition</h3>
-                            <p class="lawma-para">Become a Chartered Waste professional. Our international
-                                qualifications offer learners great opportunities for career development</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about section-bg">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-title">
-                    <h3>Our<span> Gallery</span></h3>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                        <a href="{{ asset('img/lawmanewimages/g-1.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-1.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-2.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-2.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-3.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-3.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-14.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-14.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-15.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-15.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-21.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-21.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-22.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-22.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 mb-4 mb-lg-0">
-                        <a href="{{ asset('img/lawmanewimages/g-4.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-4.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-5.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-5.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-6.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-6.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-16.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-16.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-17.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-17.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-20.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-20.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 mb-4 mb-lg-0">
-                        <a href="{{ asset('img/lawmanewimages/g-7.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-7.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-8.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-8.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-9.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-9.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-10.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-10.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-23.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-23.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-24.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-24.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 mb-4 mb-lg-0">
-                        <a href="{{ asset('img/lawmanewimages/g-11.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-11.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-12.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-12.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-13.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-13.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-18.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-18.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-19.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-19.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-25.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-25.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-
-                        <a href="{{ asset('img/lawmanewimages/g-26.jpeg') }}" class="lightbox"
-                            data-fancybox="'gallery1">
-                            <img src="{{ asset('img/lawmanewimages/g-26.jpeg') }}"
-                                class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
-                        </a>
-=======
     <!-- ======= About Section ======= -->
     <section id="about" class="about section-bg">
         <div class="container" data-aos="fade-up">
->>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
                     </div>
                 </div>

@@ -13,15 +13,22 @@ use Illuminate\Support\Facades\Redirect;
 class UserController extends Controller
 {
 
-
+    public $user;
     public function index()
     {
         $user = User::all();
-
         return view('dashboard.users', [
             'user' => $user,
         ]);
     }
+
+    // public function profile()
+    // {
+    //     $user = User::all();
+    //     return view('dashboard.profile', [
+    //         'user' => $user,
+    //     ]);
+    // }
 
     public function createPDF()
     {
@@ -43,11 +50,11 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
-        $admin = User::find((int) $id);
+        $user = User::find((int) $id);
 
-        $admin->password = Hash::make($request->input('password'));
+        $user->password = Hash::make($request->input('password'));
 
-        $admin->update();
+        $user->update();
 
         $request->session()->flush();
 
