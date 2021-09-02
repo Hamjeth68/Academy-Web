@@ -4,11 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Products Report</title>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+{{--    <!-- Styles -->--}}
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+{{--    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">--}}
 
 </head>
 <style>
@@ -20,7 +20,6 @@
 
     hr.top {
         border: 2px solid #6c757d;
-        border-radius: 10px;
     }
 
     hr.hr-text {
@@ -50,38 +49,22 @@
 </style>
 
 <body>
-    {{-- <div class="container-fluid"> --}}
-    {{-- <header class="row clearfix"> --}}
-    {{-- <div id="col-lg-7 col-md-7 float-left mt-2"> --}}
-    {{-- <div id="logo"> --}}
-    {{-- <a href="{{ url('/') }}" class="logo mr-auto ml-3"><img src={{ asset('img/acedemy.png') }} --}}
-    {{-- alt=""></a> --}}
-    {{-- </div> --}}
-    {{-- </div> --}}
-    {{-- <div class="col-lg-5 col-md-5 d-inline-block companyhead mt-2 mr-1"> --}}
-    {{-- <h3 class=""><strong>Safe Enviro Academy</strong></h3><br> --}}
-    {{-- <h5 class="">69/66 Hatton Garden,Fifth Floor Suites 23, <br> --}}
-    {{-- London EC1N 8LE</h5><br> --}}
-    {{-- <p class="">SafeEnviro@gmail.com</p> --}}
-    {{-- </div> --}}
-    {{-- </header> --}}
     <header class="clearfix">
         <div id="logo">
             <div>
-                <a href="{{ url('/') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
+                <a href="{{ url('/') }}" class="logo mr-auto"><img src="{{ asset('img/acedemy.png') }}" style="height: 5rem;"></a>
+                <div id="company" style="text-align: right; margin-top: -100px;">
+                    <h2 class="name" style="line-height: 1px">Safe Enviro Academy</h2>
+                    <div>69/66 Hatton Garden,Fifth Floor Suites 23, <br>London EC1N 8LE</div>
+                    <div>SafeEnviro@gmail.com</div>
+                </div>
             </div>
-        </div>
-        <div id="company">
-            <h2 class="name">Company Name</h2>
-            <div>455 Foggy Heights, AZ 85004, US</div>
-            <div>(602) 519-0450</div>
-            <div><a href="mailto:company@example.com">company@example.com</a></div>
         </div>
     </header>
 
     <hr class="top">
     <main>
-        <table class="table-auto-w-full col-lg-12 mt-4">
+        <table class="">
             <thead style="background: #8bf14c">
                 <tr>
                     <th class="px-4 py-2">
@@ -118,11 +101,10 @@
 
     </main>
 
-    <footer class="text-center">
+    <footer class="text-center" style="text-align: center; margin-top: 2rem">
         <strong>Invoice was created on a computer and is valid without the signature and seal.</strong>
     </footer>
 
-    {{-- </div> --}}
 </body>
 
 </html>

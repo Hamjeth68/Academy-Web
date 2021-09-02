@@ -49,7 +49,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = [
-        'profile_photo_url',
-    ];
+//    protected $appends = [
+//        'profile_photo_url',
+//    ];
 }

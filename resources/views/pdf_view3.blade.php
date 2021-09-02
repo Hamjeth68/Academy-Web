@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <title>Sales Report</title>
-    <script src="{{ asset('js/app.js') }}" defer></script>
+{{--    <script src="{{ asset('js/app.js') }}" defer></script>--}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+{{--    <link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
 </head>
@@ -20,7 +20,6 @@
 
     hr.top {
         border: 2px solid #6c757d;
-        border-radius: 10px;
     }
 
     hr.hr-text {
@@ -46,27 +45,28 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    .page-break {
+        page-break-after: always;
+    }
 
 </style>
 
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div id="col-lg-10 col-md-9 float-left mt-2">
-                <a href="{{ url('/') }}" class="logo mr-auto ml-3"><img src={{ asset('img/acedemy.png') }}
-                        alt=""></a>
-            </div>
-            <div class="col-lg-10 col-md-9 d-inline-block companyhead mt-2 mr-1">
-                <h3 class=""><strong>Safe Enviro Academy</strong></h3><br>
-                <h5 class="">69/66 Hatton Garden,Fifth Floor Suites 23, <br>
-                    London EC1N 8LE</h5><br>
-                <p class="">SafeEnviro@gmail.com</p>
+<header class="clearfix">
+    <div id="logo">
+        <div>
+            <a href="{{ url('/') }}" class="logo mr-auto"><img src="{{ asset('img/acedemy.png') }}" style="height: 5rem;"></a>
+            <div id="company" style="text-align: right; margin-top: -100px;">
+                <h2 class="name" style="line-height: 1px">Safe Enviro Academy</h2>
+                <div>69/66 Hatton Garden,Fifth Floor Suites 23, <br>London EC1N 8LE</div>
+                <div>SafeEnviro@gmail.com</div>
             </div>
         </div>
-
+    </div>
+</header>
         <hr class="top">
         <main>
-            <table class="table-auto-w-full col-lg-12 mt-4">
+            <table class="table-auto-w-full" style="width: 100%">
                 <thead style="background: #8bf14c">
                     <tr>
                         <th class="px-4 py-2">
@@ -93,60 +93,48 @@
                 <body>
                     @foreach ($course_purchased as $item)
                         <tr>
-                            <td class="border px-4 py-2">{{ $item->id }}</td>
-                            <td class="border px-4 py-2">{{ $item->product->p_title }}</td>
-                            <td class="border px-4 py-2">{{ isset($item->student->name) ? $item->student->name : '' }}
+                            <td class="border px-4 py-2">{{ isset($item->id) ? $item->id : '' }}</td>
+                            <td class="border px-4 py-2">{{ isset($item->product_id) ? (isset($item->product->p_title ) ? $item->product->p_title  : '') : '' }}</td>
+                            <td class="border px-4 py-2">{{ isset($item->student_id) ? (isset($item->student->name) ? $item->student->name : '') : '' }}
                             </td>
-                            <td class="border px-4 py-2">{{ $item->reference_number }}</td>
-                            <td class="border px-4 py-2">{{ $item->product->p_amount }}</td>
-                            <td class="border px-4 py-2">{{ $item->created_at }}</td>
+                            <td class="border px-4 py-2">{{ isset($item->reference_number ) ? $item->reference_number  : '' }}</td>
+                            <td class="border px-4 py-2">{{ isset($item->product_id) ? (isset($item->product->p_amount) ? $item->product->p_amount  : '') : '' }}</td>
+                            <td class="border px-4 py-2">{{ isset($item->created_at) ? $item->created_at : '' }}</td>
                         </tr>
                     @endforeach
                 </body>
             </table>
 
-            <div class="mb-4">
-                <h6 class=" text-uppercase"></h6>
                 <!-- Gradient divider -->
-                <hr data-content="Monthly sales" class="hr-text">
-            </div>
-            {{-- @foreach ($data as $item) --}}
-            <div class="jumbotron jumbotron-fluid" style="border-radius: 6rem; background: #8bf14c">
+                <hr class="hr-text">
+            <div class="page-break"></div>
+
+            <div class="jumbotron jumbotron-fluid" style="border-radius: 2rem; background: #8bf14c; padding-bottom: 2rem">
                 <div class="row">
-                    <div class="col-lg-5 col-md-5">
+                    <div class="col-lg-5 col-md-5" style="text-align: center">
                         <h1 class="display-4 text-center"><strong>Monthly Sales</strong></h1>
                         <h2 class="text-center">for Month {{ $month }} {{ $year }}</h2>
                     </div>
-                    <div class="col-lg-7 col-md-7">
+                    <div class="col-lg-7 col-md-7" style="text-align: center">
                         <div class="row">
-                            <div class="card mr-2" style="width: 20rem; border-radius: 20px; background: #1d5d94;
-    color: #fff;">
+                            <div class="card mr-2" style="width: 20%; border-radius: 20px; background: #1d5d94; color: #fff; text-align: center; margin-left: 26rem">
                                 <div class="card-body">
-                                    <h4 class="card-title">Total Sales</h4>
-                                    <h3 class="card-subtitle mb-2 float-right">
-                                        <strong>{{ $totalcost }}</strong>
-                                    </h3>
+                                    <h3 class="card-title" style="margin-top: 1rem">Total Sales</h3>
+                                    <h1 class="card-subtitle">
+                                        <strong>£ {{ $totalcost }}</strong>
+                                    </h1>
                                 </div>
                             </div>
-                            {{-- <div class="card mr-2" style="width: 20rem;border-radius: 20px; background: #1d5d94;
-    color: #fff;">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Total Course Purchased</h4>
-                                        <h3 class="card-subtitle mb-2 float-right"><strong>35</strong></h3>
-                                    </div>
-                                </div> --}}
                         </div>
                     </div>
                 </div>
             </div>
-            {{-- @endforeach --}}
         </main>
 
-        <footer class="text-center">
-            <strong>Invoice was created on a computer and is valid without the signature and seal.</strong>
-        </footer>
+<footer class="text-center" style="text-align: center; margin-top: 2rem">
+    <strong>Invoice was created on a computer and is valid without the signature and seal.</strong>
+</footer>
 
-    </div>
 </body>
 
 </html>

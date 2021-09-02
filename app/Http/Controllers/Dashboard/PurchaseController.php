@@ -48,10 +48,11 @@ class PurchaseController extends Controller
 
         $data = array('course_purchased' => $course_purchased, 'year' => $year, 'month' => $monthName, 'totalcost' => $totalcost);
 
+//        return view('pdf_view3')->with(['course_purchased' => $data, 'year' => $year, 'month' => $monthName, 'totalcost' => $totalcost]);
         // share data to view
         view()->share('course_purchased', $data);
 
-        $pdf = PDF::loadView('pdf_view3', $data);
+        $pdf = PDF::loadView('pdf_view3', $data)->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])->setPaper('A4', 'Landscape');
 
         // download PDF file with download method
         return $pdf->download('pdf_file.pdf');

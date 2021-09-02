@@ -268,6 +268,66 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+</div>
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+    {{--        <h1 class="logo mr-auto"><a href="index.html">BizLand<span>.</span></a></h1>--}}
+    <!-- Uncomment below if you prefer to use an image logo -->
+        <a href="{{ url('/') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
+
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li class="drop-down"><a href="">Learn With Us</a>
+                    <ul>
+                        <li><a href="{{url('/why1')}}">Why SafeEnviro Academy</a></li>
+                        <li><a href="{{url('/home-two')}}">Courses & Fees </a></li>
+                        <li><a href="{{url('/personal-development')}}">Continuing Professional Development </a></li>
+                    <!--<li><a href="{{url('/inspiring-student')}}">Inspiring Students </a></li>-->
+                        {{--                        <li><a href="{{url('/web')}}">Webinars & Upcoming Events </a></li>--}}
+                        {{--                        <li><a href="{{url('/contact1')}}">Contact Us</a></li>--}}
+                    </ul>
+                </li>
+                <li><a href="{{url('/lawma1')}}">Lawma Academy</a></li>
+                <li class="drop-down"><a href="">About</a>
+                    <ul>
+                        {{--                        <li><a href="{{url('/news1')}}">News</a></li>--}}
+                        <li><a href="{{url('/commitment1')}}">Our Commitment to the Environment</a></li>
+                        {{--                        <li><a href="#">Academy at a Glance</a></li>--}}
+                        {{--                        <li><a href="#">Professional Services</a></li>--}}
+                        {{--                        <li><a href="#">Social Responsibility</a></li>--}}
+                        {{--                        <li><a href="#">Sustainability</a></li>--}}
+                        {{--                        <li><a href="#">Corporate Identity</a></li>--}}
+                        {{--                        <li><a href="{{url('/support1')}}">Support the Academy</a></li>--}}
+                        <li><a href="{{url('/contact1')}}">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="drop-down"><a href="{{url('/lawma1')}}">Business & Partners</a>
+                    <ul>
+                        {{--                        <li><a href="{{url('/business1')}}">Business Services</a></li>--}}
+                        <li><a href="{{url('/partnership1')}}">Partnership & Collaboration</a></li>
+                        {{--                        <li><a href="{{url('/Research1')}}">Research & Innovation</a></li>--}}
+                        {{--                        <li><a href="#">About</a></li>--}}
+                        {{--                        <li><a href="#">Continuing Professional</a></li>--}}
+                        {{--                        <li><a href="#">Development</a></li>--}}
+                    </ul>
+                </li>
+                <li class="drop-down"><a href="">Support Us</a>
+                    <ul>
+                        <li><a href="{{url('/donate1')}}">Donate Now</a></li>
+                    <!--<li><a href="{{url('/Volunteer1')}}">Volunteer</a></li>-->
+                        {{--                        <li><a href="#">Transforming Lives</a></li>--}}
+                        {{--                        <li><a href="#">Finding Solutions</a></li>--}}
+                        {{--                        <li><a href="#">Inspiring Students</a></li>--}}
+                        {{--                        <li><a href="#">Get Involved</a></li>--}}
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- .nav-menu -->
+>>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top">
@@ -338,7 +398,77 @@
         </div>
     </section><!-- End Hero -->
 
+<<<<<<< HEAD
     <main id="main">
+=======
+    <section id="featured-services" class="featured-services">
+        <div class="section-title pt-3">
+            <h3>Our<span> Courses</span></h3>
+        </div>
+
+        <div class="row pt-5 mr-0 ml-0">
+            @foreach($products as $product)
+                <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
+                    <div class="text-on-image-con">
+                        <img src="{{asset('img/Group 4453.png')}}" style="" class="img-fluid" alt="" srcset="">
+                        <div class="text-con">
+                            <h4>{{ $product->p_title }}<span class="greentitle"></span></h4>
+                            {{-- <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
+                        </div>
+                    </div>
+                    <div class="btn-con mt-2" data-aos="flip-up">
+                        <button class="btn btn-lg btn-custom-green custom-btn" data-toggle="modal" data-target="#course-{{ $product->id }}">View Course</button>
+                        {{-- <a href="{{ url('book-now') }}"><button class="btn btn-lg btn-custom-blue custom-btn ml-1 float-right">Pay Here</button></a>--}}
+                    </div>
+
+                </div>
+
+                <div class="modal fade" id="course-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="z-index: 9999;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title" id="exampleModalLabel">{{$product->p_title}}</h3>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h4>Description</h4>
+                                <p>
+                                    {!! $product->p_description !!}
+                                </p>
+                                <div class="row col-lg-6 col-md-auto float-right">
+                                    <h1 class="d-inline float-right px-1 ">Fee:</h1>
+                                    {{--                                                <select id="forex-rate" name="rate" class="d-inline float-right total" >--}}
+                                    {{--                                                    @foreach($rates as $rate)--}}
+                                    {{--                                                        <option value="{{ $rate->id }}" id="base" name="{{$rate->code}}" class="cur"--}}
+                                    {{--                                                                {{ \Illuminate\Support\Facades\Session::get('currency') === $rate->id ? 'selected' : '' }} }}>{{ $rate->symbol }}</option>--}}
+                                    {{--                                                    @endforeach--}}
+                                    {{--                                                </select>--}}
+                                    <h1 class="float-right px-1" id="forex-amount">£ {{number_format($product->p_amount,2)}}</h1>
+                                    <h1 class="float-right" id="forex-newamount"></h1>
+                                </div>
+                            </div>
+                            <div class="modal-footer col-lg-12">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))
+                                    <a href="{{ url('/stdlogin') }}" type="button" class="btn btn-primary">Enroll Now</a>
+                                @else
+                                    <a href="{{ url('/enroll') }}" type="button" class="btn btn-primary">Enroll Now</a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+        </div>
+
+    </section>
+
+    <section id="featured-services" class="featured-services">
+        <div class="container" data-aos="fade-up">
+>>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
         <section id="featured-services" class="featured-services">
             <div class="section-title pt-3">
@@ -405,9 +535,15 @@
                     </div>
                 @endforeach
 
+<<<<<<< HEAD
             </div>
 
         </section>
+=======
+        </div>
+    </section>
+    <!-- End Featured Services Section -->
+>>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
         <section id="featured-services" class="featured-services">
             <div class="container" data-aos="fade-up">
@@ -492,6 +628,7 @@
                         </div>
                     </div>
 
+<<<<<<< HEAD
                     <div
                         class="col-md-4 col-lg-3 d-flex align-items-stretch justify-content-center text-center mb-5 mb-lg-0">
                         <div class="icon-box" data-aos="flip-left" data-aos-delay="300">
@@ -690,6 +827,11 @@
                             <img src="{{ asset('img/lawmanewimages/g-26.jpeg') }}"
                                 class="w-100 shadow-1-strong rounded mb-4 gpic" alt="" data-aos="zoom-out-down" />
                         </a>
+=======
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about section-bg">
+        <div class="container" data-aos="fade-up">
+>>>>>>> af497f4095aecf684cd0eabe15a2b72eebbe7bdb
 
                     </div>
                 </div>
