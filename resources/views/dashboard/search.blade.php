@@ -1,12 +1,7 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    <h2 class="font-weight-bolder mb-3">Purchased</h2>
-    <a href="{{ url('/purchases/pdf') }}">
-        <button type="submit" class="btn btn-primary">
-            {{ __('Export PDF') }}
-        </button>
-    </a>
+
     <table class="table-auto-w-full">
         <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <form type="get" action="{{ url('/search') }}">
@@ -55,4 +50,5 @@
             @endforeach
         </body>
     </table>
+
 @endsection

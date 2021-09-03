@@ -120,6 +120,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/users/pdf', [App\Http\Controllers\Dashboard\UserController::class, 'createPDF']);
     // Route::get('/purchases/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthluSum']);
     Route::get('/product/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthlySum']);
+    Route::get('/search', [App\Http\Controllers\Dashboard\PurchaseController::class, 'search']);
+
 
     //uses
     Route::get('/dashboard/users', [App\Http\Controllers\Dashboard\UserController::class, 'index']);

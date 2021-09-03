@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\CoursePurchased;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use PDF;
 use Carbon\Carbon;
-use DateTime;
 
 class PurchaseController extends Controller
 {
@@ -48,7 +48,7 @@ class PurchaseController extends Controller
 
         $data = array('course_purchased' => $course_purchased, 'year' => $year, 'month' => $monthName, 'totalcost' => $totalcost);
 
-//        return view('pdf_view3')->with(['course_purchased' => $data, 'year' => $year, 'month' => $monthName, 'totalcost' => $totalcost]);
+        //        return view('pdf_view3')->with(['course_purchased' => $data, 'year' => $year, 'month' => $monthName, 'totalcost' => $totalcost]);
         // share data to view
         view()->share('course_purchased', $data);
 
@@ -78,5 +78,17 @@ class PurchaseController extends Controller
         dd($totalcost);
         return $data;
         // dd($data);
+    }
+
+    public function search()
+    {
+        $search_text = $_GET['query'];
+
+        $course_purchased = CoursePurchased::all();
+
+        foreach ($course_purchased as $item) {
+            $item  = CoursePurchased::where('reference_number', 'LIKE', '%' . $search_text . '%')->with('p_title')->get();
+        }
+        return view('dashboard.search', compact('course_purchased'));
     }
 }
