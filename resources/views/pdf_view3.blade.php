@@ -56,6 +56,7 @@
     <div id="logo">
         <div>
             <a href="{{ url('/') }}" class="logo mr-auto"><img src="{{ asset('img/acedemy.png') }}" style="height: 5rem;"></a>
+            <a href="" class="logo mr-auto"><img src="{{ asset('img/lawmaimages/logo.png') }}" style="height: 4rem; margin-left: 2rem"></a>
             <div id="company" style="text-align: right; margin-top: -100px;">
                 <h2 class="name" style="line-height: 1px">Safe Enviro Academy</h2>
                 <div>69/66 Hatton Garden,Fifth Floor Suites 23, <br>London EC1N 8LE</div>

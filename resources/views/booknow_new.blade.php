@@ -124,12 +124,8 @@
                     <div class="table-responsive">
                         <table id="coursesTable" class="table table-bordred table-striped">
                             <thead>
-                            <th>Start Date</th>
-                            <th>End Date</th>
                             <th>Title</th>
-                            <th>Start Time</th>
                             <th>Fees</th>
-                            <th>Status</th>
                             <th>Add</th>
                             <th>Remove</th>
                             <th>View Course</th>
@@ -137,12 +133,8 @@
                             <tbody>
                             @foreach($products as $product)
                             <tr>
-                                <td>8-08-2021</td>
-                                <td>9-08-2021</td>
                                 <td>{{$product->p_title}}</td>
-                                <td>Start Time</td>
                                 <td>£ {{$product->p_amount}}</td>
-                                <td>available</td>
                                 <td>@if(in_array($product->id, $checkPurchase))
                                         <span class="badge badge-success">Purchased</span>
                                     @elseif($selectedProducts == null && $checkPurchase == null)
@@ -273,62 +265,6 @@
         });
     </script>
 @endsection
-
-{{--<script>--}}
-{{--    document.addEventListener('DOMContentLoaded', function() {--}}
-
-{{--        document.getElementById("forex-newamount").style.display = 'none';--}}
-{{--        document.getElementById("forex-amount").addEventListener("h1", calculator);--}}
-{{--        document.getElementById("forex-rate").addEventListener("change", ChangeCurrency);--}}
-
-{{--        function calculator() {--}}
-{{--            let basecurrency = document.getElementById("base").value;--}}
-{{--            let amount = document.getElementById("forex-amount").innerHTML;--}}
-{{--            let rate = document.getElementById("forex-rate").value;--}}
-
-{{--            if (rate == "select") {--}}
-{{--                document.getElementById("forex-ugx").setAttribute("placeholder", "please select currency");--}}
-{{--            } else {--}}
-
-{{--                if (basecurrency === rate) {--}}
-{{--                    document.getElementById("forex-newamount").style.display = 'none';--}}
-{{--                    document.getElementById("forex-amount").style.display = 'inline';--}}
-{{--                } else {--}}
-{{--                    let compute = amount * rate;--}}
-{{--                    document.getElementById("forex-amount").style.display = 'none';--}}
-{{--                    document.getElementById("forex-newamount").style.display = 'inline';--}}
-{{--                    document.getElementById("forex-newamount").innerHTML = compute.toFixed(2);--}}
-{{--                }--}}
-{{--            }--}}
-{{--        }--}}
-
-{{--        function ChangeCurrency() {--}}
-{{--            let basecurrency = document.getElementById("base").value;--}}
-{{--            let rate = document.getElementById("forex-rate").value;--}}
-{{--            let amount = document.getElementById("forex-amount").innerHTML;--}}
-
-{{--            if (basecurrency === rate) {--}}
-
-{{--                document.getElementById("forex-newamount").style.display = 'none';--}}
-{{--                document.getElementById("forex-amount").style.display = 'inline';--}}
-
-{{--            } else {--}}
-
-{{--                let compute = rate * amount;--}}
-{{--                document.getElementById("forex-newamount").style.display = 'inline';--}}
-{{--                document.getElementById("forex-newamount").innerHTML = compute.toFixed(2);--}}
-{{--                document.getElementById("forex-amount").style.display = 'none';--}}
-
-{{--            }--}}
-
-{{--        }--}}
-
-{{--        let menu = document.querySelectorAll('select');--}}
-{{--        M.FormSelect.init(menu, {});--}}
-
-
-{{--    });--}}
-{{--</script>--}}
 
 
 
