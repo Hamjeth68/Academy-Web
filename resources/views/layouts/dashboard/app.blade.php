@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="apple-touch-icon" sizes="76x76" href={{ asset('img/apple-icon.png') }}>
-    <link rel="icon" type="image/png" href={{ asset('img/favicon.png') }}>
+    <link rel="apple-touch-icon" sizes="76x76" href={{ asset('img/lawmaimages/logo.png') }}>
+    <link rel="icon" type="image/png" href={{ asset('img/lawmaimages/logo.png') }}>
     <meta name="XSRF-TOKEN" content="{{ csrf_token() }}" />
     <title>
         SafeEnviro
@@ -51,6 +51,14 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.p_description').wysihtml5();
+    });
+</script>
+<script>
+    $("document").ready(function(){
+        setTimeout(function(){
+            $("div.alert").remove();
+        }, 5000 ); // 5 secs
+
     });
 </script>
     <script>

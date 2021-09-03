@@ -2,8 +2,10 @@
 
 @section('content')
     <h2 class="font-weight-bolder mb-3">Products</h2>
+    @if(auth()->check() && auth()->user()->user_type === '0')
     <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Products
     </a>
+    @endif
 
     <a href="{{ url('/products/pdf') }}">
         <button type="submit" class="btn btn-primary">
@@ -252,7 +254,6 @@
                                 </button>
                             </div>
                         </form>
-
                     </td>
                 </tr>
             @endforeach
