@@ -175,9 +175,11 @@ class ProductController extends Controller
 
                 $insert_data = [];
 
-                $randomNumber = (string)Str::random(5);
+                $latestOrder = CoursePurchased::orderBy('created_at','DESC')->first();
 
-                $refNumber = '#' . str_pad(auth()->user()->id, 10, $randomNumber, STR_PAD_LEFT);
+                $target_entry = CoursePurchased::where('created_at', $latestOrder->created_at)->first();
+
+                $refNumber = 'LM'.str_pad($target_entry->id, 8, "0", STR_PAD_LEFT);
 
 
                 foreach ($data as $items) {
