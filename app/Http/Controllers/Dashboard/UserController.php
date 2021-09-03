@@ -16,7 +16,7 @@ class UserController extends Controller
     public $user;
     public function index()
     {
-        $user = User::all();
+        $user = User::where('user_type', '1')->get();
         return view('dashboard.users', [
             'user' => $user,
         ]);
