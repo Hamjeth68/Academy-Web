@@ -14,9 +14,8 @@
 </head>
 <style>
     .logobadge{
-        max-width: 25%;
+        max-width: 45%;
         float: right;
-        margin-bottom: 15px;
     }
 </style>
 <body>
@@ -25,7 +24,7 @@
 @endphp
     <div class="container" style="margin-top:15%;margin-bottom:5%">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="text-center">
                <h3> Your Total amount is ${{ number_format($total_amount,2) }} </h3>
             </div>
@@ -33,9 +32,9 @@
                 <form action="{{route('credit-card')}}"  method="post" id="payment-form">
                     @csrf
                     <div class="form-group">
-                        <div class="card-header" style="height: 7rem;">
+                        <div class="card-header" style="height: 6rem;">
                             <label for="card-element">
-                               <h3> Enter your credit card information </h3>
+                               <h6> Enter your credit card information </h6>
                             </label>
                             <img src="{{asset('img/stripe.png')}}" class="logobadge">
                         </div>

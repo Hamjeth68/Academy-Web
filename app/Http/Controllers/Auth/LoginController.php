@@ -81,7 +81,7 @@ class LoginController extends Controller
                     return Redirect::to('/stdlogin')->with('info', 'Please Verify Your Email');
                 }
 
-                return Redirect::to('/');
+                return Redirect::to('/enroll');
             }
           }
           else

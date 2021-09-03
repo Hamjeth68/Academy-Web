@@ -174,24 +174,26 @@ class ProductController extends Controller
 
                 $insert_data = [];
 
-                $courses = CoursePurchased::all();
+                $refNumber = Session::get('ref_No');
 
-                if(!empty($courses)) {
+//                $courses = CoursePurchased::all();
 
-                    $latestOrder = CoursePurchased::orderBy('created_at', 'DESC')->first();
-
-                    $target_entry = CoursePurchased::where('created_at', $latestOrder->created_at)->first();
-
-                }else{
-
-                    $target_entry = '1';
-                }
-
-                if($target_entry == '1') {
-                    $refNumber = 'LM' . str_pad('1', 8, "0", STR_PAD_LEFT);
-                } else {
-                    $refNumber = 'LM' . str_pad($target_entry->id + 1, 8, "0", STR_PAD_LEFT);
-                }
+//                if(!empty($courses)) {
+//
+//                    $latestOrder = CoursePurchased::orderBy('created_at', 'DESC')->first();
+//
+//                    $target_entry = CoursePurchased::where('created_at', $latestOrder->created_at)->first();
+//
+//                }else{
+//
+//                    $target_entry = '1';
+//                }
+//
+//                if($target_entry == '1') {
+//                    $refNumber = 'LM' . str_pad('1', 8, "0", STR_PAD_LEFT);
+//                } else {
+//                    $refNumber = 'LM' . str_pad($target_entry->id + 1, 8, "0", STR_PAD_LEFT);
+//                }
 
                 foreach ($data as $items) {
                     array_push($insert_data, [
@@ -215,6 +217,7 @@ class ProductController extends Controller
 
                 $request->session()->forget('cart');
                 $request->session()->forget('payment_completed');
+                $request->session()->forget('ref_No');
 
                 return view('thankyou');
 
