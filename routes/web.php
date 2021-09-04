@@ -134,6 +134,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/createUser', [App\Http\Controllers\Dashboard\UserController::class, 'createAdminUser']);
     Route::post('/editUser/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'editAdminUser']);
     Route::post('/editUserPassword/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'updateUserPassword']);
+    Route::post('/deleteUser/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'deleteAdminUser']);
 
 
 });

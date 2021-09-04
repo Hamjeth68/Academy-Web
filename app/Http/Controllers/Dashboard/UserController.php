@@ -128,4 +128,13 @@ class UserController extends Controller
 
         return Redirect::to('/dashboard/profile')->with('success', 'password updated successfully.');
     }
+
+    public function deleteAdminUser($id) {
+
+        $user = User::find((int) $id);
+
+        $user->delete();
+
+        return Redirect::to('/dashboard/profile')->with('success', 'User deleted successfully.');
+    }
 }
