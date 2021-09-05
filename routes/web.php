@@ -100,7 +100,8 @@ Route::get('/inspiring-student', function () {
 //dashboard routes
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'dataSets'])->name('dashboard');
+    Route::get('/dashboard/charts', [App\Http\Controllers\Dashboard\DashboardController::class, 'dataSets']);
 
     //products
     Route::get('/dashboard/products', [App\Http\Controllers\Dashboard\ProductController::class, 'index']);
@@ -131,10 +132,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 
-    Route::get('/dashboard/profile',function(){
+    Route::get('/dashboard/profile', function () {
         return view('dashboard.profile');
     });
-
 });
 
 //student auth pages

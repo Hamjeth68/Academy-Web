@@ -83,11 +83,17 @@ class PurchaseController extends Controller
     public function search()
     {
         $search_text = $_GET['query'];
-
+        // dd($search_text);
         $course_purchased = CoursePurchased::all();
+        $product = Product::where('p_title', 'like', '%' . $search_text . '%')->first();
+        $courses = CoursePurchased::where('reference_number', 'like', '%' . $search_text . '%')->first();
 
         foreach ($course_purchased as $item) {
-            $item  = CoursePurchased::where('reference_number', 'LIKE', '%' . $search_text . '%')->with('p_title')->get();
+            $course_purchased  = CoursePurchased::where(function ($query) use ($search_text) {
+                $query->where('reference_number', 'like', '%' . $search_text . '%')
+                    ->orWhere('p_title', 'like', '%' . $search_text . '%');
+            })
+                ->get();
         }
         return view('dashboard.search', compact('course_purchased'));
     }
