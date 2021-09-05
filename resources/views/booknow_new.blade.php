@@ -134,7 +134,7 @@
                             @foreach($products as $product)
                             <tr>
                                 <td>{{$product->p_title}}</td>
-                                <td>£ {{$product->p_amount}}</td>
+                                <td>£ {{number_format($product->p_amount,2)}}</td>
                                 <td>@if(in_array($product->id, $checkPurchase))
                                         <span class="badge badge-success">Purchased</span>
                                     @elseif($selectedProducts == null && $checkPurchase == null)

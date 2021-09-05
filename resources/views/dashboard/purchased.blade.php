@@ -8,16 +8,18 @@
         </button>
     </a>
     <table class="table-auto-w-full">
-        <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <form type="get" action="{{ url('/search') }}">
-                <div row>
+        <div class="ms-md-auto pe-md-3 d-flex align-items-center" style="float: right">
+            <form type="get" action="{{ url('/dashboard/purchased') }}">
+                @csrf
+                <div class="row">
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input name="query" type="search" class="form-control" placeholder="Type here...">
-                        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0">Search</button>
+                        <button type="submit" class="btn btn-outline-dark my-2 my-sm-0" onclick="nav()">Search</button>
                     </div>
                 </div>
             </form>
+            <a href="{{url('/dashboard/purchased')}}" style="margin-left: 10px"><button class="btn btn-primary mb-0 ml-3"><i class="fa fa-refresh"></i></button></a>
         </div>
         <thead>
             <tr>
@@ -55,4 +57,10 @@
             @endforeach
         </body>
     </table>
+    <script>
+        $( document ).ready(function() {
+            console.log( "ready!" );
+        });
+            document.getElementById("purchased").className = "nav-link active";
+    </script>
 @endsection

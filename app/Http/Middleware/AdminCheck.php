@@ -17,8 +17,7 @@ class AdminCheck extends Middleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->check() && auth()->user()->user_type !== '0')
-        {
+        if (auth()->check() && !auth()->user()->isAdminUsers()) {
             return Redirect::To('/');
         }
         return $next($request);

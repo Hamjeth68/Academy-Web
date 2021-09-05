@@ -28,6 +28,7 @@ class User extends Authenticatable
         'date',
         'state',
         'verification_code',
+        'user_type_name',
     ];
 
     /**
@@ -52,4 +53,8 @@ class User extends Authenticatable
 //    protected $appends = [
 //        'profile_photo_url',
 //    ];
+
+    public function isAdminUsers() {
+        return in_array($this->user_type, ['0','2','3']);
+    }
 }

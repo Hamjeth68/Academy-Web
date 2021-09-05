@@ -5,15 +5,41 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Models\CoursePurchased;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
 use Carbon\Carbon;
 
 class PurchaseController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $course_purchased = CoursePurchased::all();
+
+        if($request){
+
+            $search = $request->input('query');
+
+            $reference = CoursePurchased::where('reference_number', 'LIKE', "%{$search}%")->first();
+
+            $product = Product::where('p_title', 'LIKE', "%{$search}%")->first();
+
+            $student = User::where('name', 'LIKE', "%{$search}%")->first();
+
+            if($reference) {
+                $course_purchased = CoursePurchased::query()
+                    ->where('reference_number', 'LIKE', "%{$search}%")
+                    ->get();
+            }elseif ($product) {
+                $course_purchased = CoursePurchased::query()
+                    ->where('product_id', 'LIKE', "%{$product->id}%")
+                    ->get();
+            } elseif ($student) {
+                $course_purchased = CoursePurchased::query()
+                    ->where('student_id', 'LIKE', "%{$student->id}%")
+                    ->get();
+            }
+        }
 
         return view('dashboard.purchased', [
             'course_purchased' => $course_purchased,
@@ -80,21 +106,37 @@ class PurchaseController extends Controller
         // dd($data);
     }
 
-    public function search()
-    {
-        $search_text = $_GET['query'];
-        // dd($search_text);
-        $course_purchased = CoursePurchased::all();
-        $product = Product::where('p_title', 'like', '%' . $search_text . '%')->first();
-        $courses = CoursePurchased::where('reference_number', 'like', '%' . $search_text . '%')->first();
-
-        foreach ($course_purchased as $item) {
-            $course_purchased  = CoursePurchased::where(function ($query) use ($search_text) {
-                $query->where('reference_number', 'like', '%' . $search_text . '%')
-                    ->orWhere('p_title', 'like', '%' . $search_text . '%');
-            })
-                ->get();
-        }
-        return view('dashboard.search', compact('course_purchased'));
-    }
+//    public function search(Request $request)
+//    {
+////        $search_text = $_GET['query'];
+////
+////        $course_purchased = CoursePurchased::all();
+////
+////        foreach ($course_purchased as $item) {
+////            $item  = CoursePurchased::where('reference_number', 'LIKE', '%' . $search_text . '%')->with('p_title')->get();
+////        }
+//
+//        $search = $request->input('query');
+//
+//        $reference = CoursePurchased::where('reference_number', 'LIKE', "%{$search}%")->first();
+//
+//        $product = Product::where('p_title', 'LIKE', "%{$search}%")->first();
+//
+//        $student = User::where('name', 'LIKE', "%{$search}%")->first();
+//
+//        if($reference) {
+//            $course_purchased = CoursePurchased::query()
+//                ->where('reference_number', 'LIKE', "%{$search}%")
+//                ->get();
+//        }elseif ($product) {
+//            $course_purchased = CoursePurchased::query()
+//                ->where('product_id', 'LIKE', "%{$product->id}%")
+//                ->get();
+//        } elseif ($student) {
+//            $course_purchased = CoursePurchased::query()
+//                ->where('student_id', 'LIKE', "%{$student->id}%")
+//                ->get();
+//        }
+//        return view('dashboard.purchased', compact('course_purchased'));
+//    }
 }

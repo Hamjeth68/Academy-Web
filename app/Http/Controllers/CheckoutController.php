@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CoursePurchased;
 use App\Models\CurrencyRate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -27,18 +28,36 @@ class CheckoutController extends Controller
 
             $data = (Session::get('cart'));
 
-
-            $data = (Session::get('cart'));
+            $name = auth()->user()->name;
 
             $totalamount = $data->totalPrice;
+
+            $courses = CoursePurchased::all();
+
+            if(!empty($courses)) {
+
+                $latestOrder = CoursePurchased::orderBy('created_at', 'DESC')->first();
+
+                $target_entry = CoursePurchased::where('created_at', $latestOrder->created_at)->first();
+
+            }else{
+
+                $target_entry = '1';
+            }
+
+            if($target_entry == '1') {
+                $refNumber = 'LM' . str_pad('1', 8, "0", STR_PAD_LEFT);
+            } else {
+                $refNumber = 'LM' . str_pad($target_entry->id + 1, 8, "0", STR_PAD_LEFT);
+            }
+
 
             try
             {
                 $payment_intent = \Stripe\PaymentIntent::create([
-                    'description' => 'Stripe Test Payment',
                     'amount' => (float)$totalamount * 100,
                     'currency' => 'USD',
-                    'description' => 'Payment From SafeEnviro',
+                    'description' => 'Payment From SafeEnviro student by '. $name . ' Reference No: '.$refNumber,
                     'payment_method_types' => ['card'],
                 ]);
 
@@ -50,6 +69,8 @@ class CheckoutController extends Controller
             }
 
             $intent = $payment_intent->client_secret;
+
+            Session::put('ref_No', $refNumber);
 
             return view('credit-card', compact('intent'))->with('total_amount', (float)$totalamount);
         }else {

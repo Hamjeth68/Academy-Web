@@ -63,7 +63,7 @@
             @if(auth()->check() && auth()->user()->user_type !== '1' )
                 <a href="{{ url('/dashboard')}}" class="text-black-50 font-weight-bold">Dashboard</a>
             @endif
-            @if(auth()->check() && auth()->user()->user_type !== '0')
+            @if(auth()->check() && auth()->user()->user_type == '1')
                 <a href="{{ url('/stdEdit/'.auth()->user()->id) }}" class="text-black-50 font-weight-bold">Profile</a>
             @endif
             <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Alumni</a>

@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,24 +12,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+<style>
+    .logobadge{
+        max-width: 45%;
+        float: right;
+    }
+</style>
 <body>
 @php
     $stripe_key = 'pk_test_P12QLgq8kFlmguiOdbN0N7N700w6ctR8qR';
 @endphp
-<div class="container" style="margin-top:10%;margin-bottom:10%">
+    <div class="container" style="margin-top:15%;margin-bottom:5%">
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="text-center">
-               <h3> Your Total amount is ${{ $total_amount }} </h3>
+               <h3> Your Total amount is ${{ number_format($total_amount,2) }} </h3>
             </div>
             <div class="card">
                 <form action="{{route('credit-card')}}"  method="post" id="payment-form">
                     @csrf
                     <div class="form-group">
-                        <div class="card-header">
+                        <div class="card-header" style="height: 6rem;">
                             <label for="card-element">
-                                Enter your credit card information
+                               <h6> Enter your credit card information </h6>
                             </label>
+                            <img src="{{asset('img/stripe.png')}}" class="logobadge">
                         </div>
                         <div class="card-body">
                             <div id="card-element">
@@ -41,7 +51,7 @@
                     <div class="card-footer">
                         <button
                             id="card-button"
-                            class="btn btn-dark"
+                            class="btn btn-dark btn-lg"
                             type="submit"
                             data-secret="{{ $intent }}"
                         > Pay </button>
@@ -117,3 +127,4 @@
 </script>
 </body>
 </html>
+@endsection

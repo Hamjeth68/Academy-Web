@@ -71,8 +71,9 @@ class LoginController extends Controller
           // attempt to do the login
           if (Auth::attempt($userData))
           {
-            if(auth()->user()->user_type == 0) {
+            if(auth()->user()->user_type === '0' || auth()->user()->user_type === '2' || auth()->user()->user_type === '3') {
                 return Redirect::to('/dashboard');
+
             } else {
 
                 if(auth()->user()->user_type === '1' && is_null(auth()->user()->email_verified_at))
@@ -81,7 +82,7 @@ class LoginController extends Controller
                     return Redirect::to('/stdlogin')->with('info', 'Please Verify Your Email');
                 }
 
-                return Redirect::to('/');
+                return Redirect::to('/enroll');
             }
           }
           else

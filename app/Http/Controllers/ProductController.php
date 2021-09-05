@@ -28,7 +28,6 @@ class ProductController extends Controller
         $checkPurchase = CoursePurchased::where('student_id', auth()->user()->id)->pluck('product_id')->toArray();
 
         if(!Session::has('cart')){
-
             return view('booknow_new', ['products' => $data, 'selectedProducts' => null, 'totalPrice' => null, 'rates' => $rates, 'checkPurchase' => $checkPurchase]);
         }
 
@@ -175,12 +174,26 @@ class ProductController extends Controller
 
                 $insert_data = [];
 
-                $latestOrder = CoursePurchased::orderBy('created_at','DESC')->first();
+                $refNumber = Session::get('ref_No');
 
-                $target_entry = CoursePurchased::where('created_at', $latestOrder->created_at)->first();
+//                $courses = CoursePurchased::all();
 
-                $refNumber = 'LM'.str_pad($target_entry->id, 8, "0", STR_PAD_LEFT);
-
+//                if(!empty($courses)) {
+//
+//                    $latestOrder = CoursePurchased::orderBy('created_at', 'DESC')->first();
+//
+//                    $target_entry = CoursePurchased::where('created_at', $latestOrder->created_at)->first();
+//
+//                }else{
+//
+//                    $target_entry = '1';
+//                }
+//
+//                if($target_entry == '1') {
+//                    $refNumber = 'LM' . str_pad('1', 8, "0", STR_PAD_LEFT);
+//                } else {
+//                    $refNumber = 'LM' . str_pad($target_entry->id + 1, 8, "0", STR_PAD_LEFT);
+//                }
 
                 foreach ($data as $items) {
                     array_push($insert_data, [
@@ -204,6 +217,7 @@ class ProductController extends Controller
 
                 $request->session()->forget('cart');
                 $request->session()->forget('payment_completed');
+                $request->session()->forget('ref_No');
 
                 return view('thankyou');
 

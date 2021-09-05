@@ -89,6 +89,7 @@ class RegisterController extends Controller
             'state' => $data['state'],
             'verification_code' => $verification_code,
             'user_type' => '1',
+            'user_type_name' => 'Student',
         ]);
     }
 
