@@ -23,7 +23,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $data = Product::all();
+        $data = Product::where('is_deleted', '0')->get();
         $rates = CurrencyRate::all();
         $checkPurchase = CoursePurchased::where('student_id', auth()->user()->id)->pluck('product_id')->toArray();
 

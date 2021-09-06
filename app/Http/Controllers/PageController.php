@@ -39,7 +39,7 @@ class PageController extends Controller
 
     public function coursePage(Request $request)
     {
-        $data = Product::all();
+        $data = Product::where('is_deleted', '0')->get();
         $rates = CurrencyRate::all();
 
         return view('home2', ['products' => $data,]);
@@ -47,7 +47,7 @@ class PageController extends Controller
 
     public function courseLawmaPage(Request $request)
     {
-        $data = Product::all();
+        $data = Product::where('is_deleted', '0')->get();
         $rates = CurrencyRate::all();
 
         return view('lawma', ['products' => $data,]);

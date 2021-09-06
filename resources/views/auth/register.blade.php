@@ -11,6 +11,13 @@
                 <div class="card-body">
                     <div class="mb-4 font-medium text-sm text-green-600">
                         @include('flash-message')
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                            </div>
+                        @endif
                     </div>
                     <form method="POST" action="{{ route('studentRegister') }}">
                         @csrf
@@ -105,7 +112,7 @@
 
                                 @error('state')
                                 <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                            <strong>{{ $error }}</strong>
                                         </span>
                                 @enderror
                             </div>
