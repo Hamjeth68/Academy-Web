@@ -129,7 +129,7 @@ class RegisterController extends Controller
             $user->email_verified_at = now();
             $user->save();
 
-            $admin_email = ['safe.envirouk@gmail.com'];
+            $admin_email = ['admin@lawma.academy'];
 
             Mail::send('admin-email-template', ['name'=> $user->name, 'email' => $user->email,'phone_number' => $user->phone,
                 'state' => $user->state,'profession_occupation' => $user->profession_occupation,'address' => $user->address,'dob' => $user->date], function ($message) use ($admin_email) {
