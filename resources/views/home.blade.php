@@ -42,10 +42,29 @@
     ======================================================== -->
 </head>
 
+<style>
+    .nav-menu > ul > li > a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: #90e434;
+        visibility: hidden;
+        width: 0px;
+        transition: all 0.3s ease-in-out 0s;
+    }
+
+    .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
+        color: #90e434;
+    }
+</style>
+
 <body>
 
 <!-- ======= Top Bar ======= -->
-<div id="topbar" class="d-lg-flex align-items-center fixed-top">
+<div id="topbar" class="d-lg-flex align-items-center fixed-top" style="background: #90e434">
     <div class="container d-flex">
         <div class="contact-info mr-auto">
             {{--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>--}}
@@ -72,7 +91,7 @@
             <a href="{{url('/stdregister')}}" class="text-black-50 font-weight-bold">Register</a>
             @endif
 
-        @if(auth()->check())
+            @if(auth()->check())
 
                 {{--                <a href="{{ route('logout') }}" method="POST" class="text-black-50 font-weight-bold">Logout</a>--}}
                 <form method="POST" action="{{ route('logout') }}" class="d-inline-block">
