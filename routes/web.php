@@ -100,7 +100,8 @@ Route::get('/inspiring-student', function () {
 //dashboard routes
 Route::middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [App\Http\Controllers\Dashboard\DashboardController::class, 'dataSets'])->name('dashboard');
+    Route::get('/dashboard/charts', [App\Http\Controllers\Dashboard\DashboardController::class, 'dataSets']);
 
     //products
     Route::get('/dashboard/products', [App\Http\Controllers\Dashboard\ProductController::class, 'index']);
@@ -135,7 +136,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/editUser/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'editAdminUser']);
     Route::post('/editUserPassword/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'updateUserPassword']);
     Route::post('/deleteUser/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'deleteAdminUser']);
-
 
 });
 

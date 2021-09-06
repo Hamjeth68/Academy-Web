@@ -24,4 +24,6 @@ class Product extends Model
     // {
     //     return $this->belongsTo(\App\Models\Student::class);
     // }
+
+    
 }
