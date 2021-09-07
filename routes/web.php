@@ -120,6 +120,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/purchases/pdf', [App\Http\Controllers\Dashboard\PurchaseController::class, 'createPDF']);
     Route::get('/users/pdf', [App\Http\Controllers\Dashboard\UserController::class, 'createPDF']);
     // Route::get('/purchases/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthluSum']);
+    Route::get('/unit/sales', [App\Http\Controllers\Dashboard\DashboardController::class, 'totalProducts']);
     Route::get('/product/sales', [App\Http\Controllers\Dashboard\PurchaseController::class, 'getMonthlySum']);
     Route::get('/search', [App\Http\Controllers\Dashboard\PurchaseController::class, 'search']);
 
@@ -131,12 +132,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'updateAdminPassword'])->name('admin.update');
 
 
-    Route::get('/dashboard/profile',[App\Http\Controllers\Dashboard\UserController::class, 'adminUsers']);
+    Route::get('/dashboard/profile', [App\Http\Controllers\Dashboard\UserController::class, 'adminUsers']);
     Route::post('/createUser', [App\Http\Controllers\Dashboard\UserController::class, 'createAdminUser']);
     Route::post('/editUser/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'editAdminUser']);
     Route::post('/editUserPassword/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'updateUserPassword']);
     Route::post('/deleteUser/{id}', [App\Http\Controllers\Dashboard\UserController::class, 'deleteAdminUser']);
-
 });
 
 //student auth pages
@@ -156,5 +156,4 @@ Route::middleware('auth')->group(function () {
     Route::post('checkout', [App\Http\Controllers\CheckoutController::class, 'afterpayment'])->name('credit-card');
 
     Route::get('/afterCheckout', [App\Http\Controllers\ProductController::class, 'checkOut']);
-
 });

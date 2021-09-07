@@ -2,11 +2,11 @@
 
 @section('content')
     <h2 class="font-weight-bolder mb-3">Purchased</h2>
-    <a href="{{ url('/purchases/pdf') }}">
+    {{-- <a href="{{ url('/purchases/pdf') }}">
         <button type="submit" class="btn btn-primary">
             {{ __('Export PDF') }}
         </button>
-    </a>
+    </a> --}}
     <table class="table-auto-w-full">
         <div class="ms-md-auto pe-md-3 d-flex align-items-center" style="float: right">
             <form type="get" action="{{ url('/dashboard/purchased') }}">
