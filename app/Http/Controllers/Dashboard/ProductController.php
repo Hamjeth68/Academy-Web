@@ -14,7 +14,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        $products = Product::where('is_deleted', '0')->get();
 
         return view('dashboard.products', [
             'products' => $products,
@@ -67,7 +67,12 @@ class ProductController extends Controller
     public function deletePrdoct(Product $data, $id)
     {
         $data = Product::find($id);
-        if ($data->delete()) {
+
+        $is_deleted = ([
+            'is_deleted' => '1',
+        ]);
+
+        if ($data->update($is_deleted)) {
             return redirect()->to('/dashboard/products');
         } else {
             return redirect()->to('/dashboard/products')->with('error');
@@ -78,7 +83,7 @@ class ProductController extends Controller
     public function createPDF()
     {
         // retreive all records from db
-        $data = Product::all();
+        $data = Product::where('is_deleted', '0')->get();
         // share data to view
         view()->share('products', $data);
         $pdf = PDF::loadView('pdf_view', $data)->setOptions(['defaultFont' => 'sans-serif', 'isRemoteEnabled' => true])->setPaper('A4', 'Landscape');

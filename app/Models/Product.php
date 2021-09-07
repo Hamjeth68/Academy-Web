@@ -16,6 +16,7 @@ class Product extends Model
         'p_name',
         'p_description',
         'p_amount',
+        'is_deleted',
     ];
     protected $dates = ['created_at', 'updated_at'];
 

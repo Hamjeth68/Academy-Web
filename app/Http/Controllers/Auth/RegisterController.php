@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -94,11 +95,23 @@ class RegisterController extends Controller
     }
 
     public function studentRegister(Request $request) {
+//        dd($request->all());
+
+        $year = Carbon::now()->year;
+
+        $before = $year - 16;
+
+        $after = $year - 90;
+
+        $before_date = Carbon::create($before, 01, 01)->toDateString();
+
+        $after_date = Carbon::create($after, 01, 01)->toDateString();
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'date' => ['before:'.$before_date , 'after:'.$after_date],
         ]);
 
         $data = $request->all();
@@ -116,7 +129,7 @@ class RegisterController extends Controller
             $user->email_verified_at = now();
             $user->save();
 
-            $admin_email = ['safe.envirouk@gmail.com'];
+            $admin_email = ['admin@lawma.academy'];
 
             Mail::send('admin-email-template', ['name'=> $user->name, 'email' => $user->email,'phone_number' => $user->phone,
                 'state' => $user->state,'profession_occupation' => $user->profession_occupation,'address' => $user->address,'dob' => $user->date], function ($message) use ($admin_email) {
