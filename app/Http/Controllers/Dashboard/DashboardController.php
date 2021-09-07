@@ -30,20 +30,23 @@ class DashboardController extends Controller
             $months[] = $month;
             $monthCount[] = count($values);
         }
-        $dataPie = DB::table('course_purchased')
-            ->select(
-                DB::raw('product_id as product_id'),
-                DB::raw('count(*) as number')
-            )
-            ->groupBy('product_id')
-            ->get();
-        $array[] = ['product_id', 'Number'];
-        foreach ($dataPie as $key => $value) {
-            $array[++$key] = [$value->product_id, $value->number];
-            // $tData = count($data);
-        }
 
-        return view('dashboard.dashboard', ['data' => $data, 'months' => $months, 'monthCount' => $monthCount, 'product_id' => json_encode($array)]);
+        $group = CoursePurchased::with(['product'])->get();
+
+        $chart_data = [];
+        $chart_count = [];
+        $group->groupBy('product_id')->each(function ($item) use (&$chart_data, &$chart_count)
+        {
+            array_push($chart_data, [
+               $item->first()->product->p_name,
+            ]);
+
+            array_push($chart_count, [
+                $item->count(),
+            ]);
+        });
+
+        return view('dashboard.dashboard', ['data' => $data, 'months' => $months, 'monthCount' => $monthCount, 'courses' => $chart_data, 'count' => $chart_count]);
     }
 
     public function totalProducts()

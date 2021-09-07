@@ -8,29 +8,24 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
     type: "pie",
     data: {
-        labels: [
-            "Introduction to Waste Management",
-            "Hazardous Waste",
-            "Waste Legislation",
-            "Landfill Management",
-            "Specialist Course",
-            "Fire Safety",
-        ],
+        labels: _ldata,
         datasets: [
             {
-                data: [
-                    {
-                        value: { $product_id },
-                    },
-                ],
+                data: _cdata,
                 backgroundColor: [
                     "#007bff",
                     "#dc3545",
                     "#ffc107",
                     "#28a745",
-                    "#038cfc",
+                    "#a82504",
                     "#4103fc",
-                    "#000000",
+                    "#03fc98",
+                    "#fcf003",
+                    "#6fdef6",
+                    "#e52a84",
+                    "#f678b5",
+                    "#0c9de8",
+                    "#ee6161",
                 ],
             },
         ],
