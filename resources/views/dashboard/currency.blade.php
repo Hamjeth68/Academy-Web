@@ -19,7 +19,7 @@
                                     <div class="col-md-6">
                                         <input id="exchange_rate" type="text"
                                             class="form-control  @error('exchange_rate') is-invalid @enderror"
-                                            name="exchange_rate" value="{{ old('exchange_rate', $item->exchange_rate) }}"
+                                            name="exchange_rate" value="{{isset($item->exchange_rate) ? $item->exchange_rate : ''}}"
                                             required autocomplete="exchange_rate" autofocus>
 
                                         @error('exchange_rate')
