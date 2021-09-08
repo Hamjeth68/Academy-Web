@@ -114,6 +114,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     //currency
     Route::get('/dashboard/currency', [App\Http\Controllers\Dashboard\CurrencyRateController::class, 'index']);
+    Route::post('/dashboard/currency/edit', [App\Http\Controllers\Dashboard\CurrencyRateController::class, 'currencyEdit'])->name('edit.currency');
 
     //purchases
     Route::get('/dashboard/purchased', [App\Http\Controllers\Dashboard\PurchaseController::class, 'index']);
