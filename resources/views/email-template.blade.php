@@ -167,10 +167,10 @@
                                             <p class="para"><strong>Selected Courses</strong></p>
                                             <p class="para"></p>
                                             @foreach($data_session as $data)
-                                            <p class="para">{{$data['product_name']}} - ${{ number_format($data['product_amount'],2) }}</p>
+                                            <p class="para">{{$data['product_name']}} - £{{ number_format($data['product_amount'],2) }}</p>
                                             <p class="para"></p>
                                             @endforeach
-                                            <p class="para"><strong>Total Amount - ${{ number_format($totalAmount,2) }}</strong></p>
+                                            <p class="para"><strong>Total Amount - £{{ number_format($totalAmount,2) }}</strong></p>
                                             <p class="para"> </p>
                                             <p class="para">Our Admissions Team shall be in touch with you shortly with student registration details and course schedules. </p>
                                             <p class="para"> </p>

@@ -263,8 +263,8 @@
             @else
                 <a href="{{url('/stdlogin')}}" class="text-black-50 font-weight-bold">Login</a>
             @endif
-            <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>
-            <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>
+{{--            <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>--}}
+{{--            <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>--}}
         </div>
     </div>
 </div>

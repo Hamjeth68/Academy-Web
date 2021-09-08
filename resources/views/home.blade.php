@@ -59,6 +59,32 @@
     .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
         color: #90e434;
     }
+
+    @media (max-width: 992px) {
+        #header {
+            padding: 15px;
+            top: 1rem;
+        }
+        #header .logo {
+            font-size: 28px;
+        }
+
+        #topbar {
+            background: #90e434;
+            height: 30px;
+            font-size: 14px;
+            transition: all 0.5s;
+            color: #000000;
+        }
+
+        .searchtype {
+            margin-top: 2px;
+        }
+
+        button.mobile-nav-toggle.d-lg-none {
+            top: 2rem;
+        }
+    }
 </style>
 
 <body>
@@ -108,8 +134,8 @@
             @else
                 <a href="{{url('/stdlogin')}}" class="text-black-50 font-weight-bold">Login</a>
             @endif
-            <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>
-            <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>
+{{--            <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>--}}
+{{--            <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>--}}
         </div>
     </div>
 </div>
