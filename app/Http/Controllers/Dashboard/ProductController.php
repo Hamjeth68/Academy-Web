@@ -64,7 +64,7 @@ class ProductController extends Controller
         return redirect()->to('/dashboard/products');
     }
 
-    public function deletePrdoct(Product $data, $id)
+    public function deleteProduct(Product $data, $id)
     {
         $data = Product::find($id);
 

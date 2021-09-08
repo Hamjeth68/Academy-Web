@@ -108,13 +108,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/dashboard/products-add', [App\Http\Controllers\Dashboard\ProductController::class, 'createProduct']);
     Route::get('/products/pdf', [App\Http\Controllers\Dashboard\ProductController::class, 'createPDF']);
     Route::put('/products/{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'updateProduct'])->name('edit.products');
-    Route::delete('/products/delete{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'deletePrdoct'])->name('delete.product');
+    Route::delete('/products/delete{id}', [App\Http\Controllers\Dashboard\ProductController::class, 'deleteProduct'])->name('delete.product');
 
 
 
     //currency
     Route::get('/dashboard/currency', [App\Http\Controllers\Dashboard\CurrencyRateController::class, 'index']);
-    Route::post('/dashboard/currency/edit{id}', [App\Http\Controllers\Dashboard\CurrencyRateController::class, 'currencyEdit'])->name('edit.currency');
+    Route::put('/dashboard/currency/edit/{id}', [App\Http\Controllers\Dashboard\CurrencyRateController::class, 'currencyEdit']);
 
     //purchases
     Route::get('/dashboard/purchased', [App\Http\Controllers\Dashboard\PurchaseController::class, 'index']);

@@ -24,7 +24,7 @@ class CurrencyRateController extends Controller
             'exchange_rate' => 'required',
         ]);
 
-        $currencyrate = CurrencyRate::find('id', $id)->first();
+        $currencyrate = CurrencyRate::findorfail($id);
 
         $data = ([
             'exchange_rate' => $request->exchange_rate,
