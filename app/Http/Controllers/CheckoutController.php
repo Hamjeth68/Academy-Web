@@ -19,7 +19,7 @@ class CheckoutController extends Controller
         if(Session::has('cart'))
         {
 
-            $rates = CurrencyRate::where('code', 'USD')->first();
+            $rates = CurrencyRate::where('code', 'GBP')->first();
 
             $cart = Session::get('cart');
 
@@ -56,7 +56,7 @@ class CheckoutController extends Controller
             {
                 $payment_intent = \Stripe\PaymentIntent::create([
                     'amount' => (float)$totalamount * 100,
-                    'currency' => 'USD',
+                    'currency' => 'GBP',
                     'description' => 'Payment From SafeEnviro student by '. $name . ' Reference No: '.$refNumber,
                     'payment_method_types' => ['card'],
                 ]);

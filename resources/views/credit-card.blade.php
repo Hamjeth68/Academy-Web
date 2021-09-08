@@ -26,7 +26,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="text-center">
-               <h3> Your Total amount is ${{ number_format($total_amount,2) }} </h3>
+               <h3> Your Total amount is £{{ number_format($total_amount,2) }} </h3>
             </div>
             <div class="card">
                 <form action="{{route('credit-card')}}"  method="post" id="payment-form">

@@ -40,8 +40,8 @@
             @else
                 <a href="{{url('/stdlogin')}}" class="text-black-50 font-weight-bold">Login
                     @endif
-                    <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>
-                    <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>
+{{--                    <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>--}}
+{{--                    <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>--}}
                 {{--            <a href="#" class="twitter"><i class="icofont-twitter"></i></a>--}}
                 {{--            <a href="#" class="facebook"><i class="icofont-facebook"></i></a>--}}
                 {{--            <a href="#" class="instagram"><i class="icofont-instagram"></i></a>--}}
