@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+    <style>
+        @media (max-width: 768px) {
+            #hero {
+                height: 220vh;
+            }
+        }
+    </style>
 <section id="hero" class="d-flex align-items-center" style="height: 125vh">
  <div class="container">
     <div class="row justify-content-center">

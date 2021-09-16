@@ -1,9 +1,9 @@
 @extends('layouts.dashboard.app')
 
 @section('content')
-    <h2 class="font-weight-bolder mb-3">Products</h2>
+    <h2 class="font-weight-bolder mb-3">Courses</h2>
     @if(auth()->check() && auth()->user()->user_type === '0')
-        <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Products
+        <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Add Course
         </a>
     @endif
 
@@ -12,17 +12,20 @@
             {{ __('Export PDF') }}
         </button>
     </a>
+    <div class="mb-4 font-medium text-sm text-green-600">
+        @include('flash-message')
+    </div>
     <div class="modal fade" id="addProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="card-body">
                     <form action="{{ url('/dashboard/products-add') }}" class="contact100-form validate-form"
-                          method="post">
+                          method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="p_title"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Product Title') }}</label>
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Course Title') }}</label>
 
                             <div class="col-md-6">
                                 <input id="p_title" type="text" class="form-control @error('p_title') is-invalid @enderror"
@@ -38,7 +41,7 @@
 
                         <div class="form-group row">
                             <label for="p_name"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Course Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="p_name" type="text" class="form-control @error('p_name') is-invalid @enderror"
@@ -55,7 +58,7 @@
 
                         <div class="form-group row">
                             <label for="p_description"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Product Description') }}</label>
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Course Description') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="p_description" type="text"
@@ -74,7 +77,7 @@
 
                         <div class="form-group row">
                             <label for="p_amount"
-                                   class="col-md-4 col-form-label text-md-right">{{ __('Product Amount') }}</label>
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Course Amount') }}</label>
 
                             <div class="col-md-6">
                                 <input id="p_amount" type="number"
@@ -82,6 +85,22 @@
                                        autocomplete="Product Amount">
 
                                 @error('PhoneNumber')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="image"
+                                   class="col-md-4 col-form-label text-md-right">{{ __('Course Image') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file"
+                                       class="form-control @error('image') is-invalid @enderror" name="image" required>
+                                <p class="text-muted text-xs">(upload image size should be less than 2MB)</p>
+                                @error('image')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -110,12 +129,12 @@
                     <div class="modal-content">
                         <div class="card-body">
                             <form action="{{ route('edit.products', $product->id) }}"
-                                  class="contact100-form validate-form" method="post">
+                                  class="contact100-form validate-form" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group row">
                                     <label for="p_title"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Product Title') }}</label>
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Course Title') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="p_title" type="text"
@@ -133,7 +152,7 @@
 
                                 <div class="form-group row">
                                     <label for="p_name"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Course Name') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="p_name" type="text"
@@ -152,7 +171,7 @@
 
                                 <div class="form-group row">
                                     <label for="p_description"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Product Description') }}</label>
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Course Description') }}</label>
 
                                     <div class="col-md-6">
                                         <textarea id="p_description" type="text"
@@ -174,7 +193,7 @@
 
                                 <div class="form-group row">
                                     <label for="p_amount"
-                                           class="col-md-4 col-form-label text-md-right">{{ __('Product Amount') }}</label>
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Course Amount') }}</label>
 
                                     <div class="col-md-6">
                                         <input id="p_amount" type="number"
@@ -186,6 +205,25 @@
                                         <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="image"
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Course Image') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="image" type="file"
+                                               class="form-control @error('image') is-invalid @enderror" name="image">
+                                        <p class="text-muted text-xs">(upload image size should be less than 2MB)</p>
+                                        @if($product->image)
+                                        <img src="{{ asset('image/'.$product->image) }}" width="100px" class="mt-1">
+                                        @endif
+                                        @error('image')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                         @enderror
                                     </div>
                                 </div>
@@ -244,22 +282,42 @@
                         <div class="col-md-6">
                             <button class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#editProduct{{ $product->id }}" type="button">
-                                {{ __('Edit Product') }}
+                                {{ __('Edit Course') }}
                             </button>
 
+                        </div>
+                            <div class="col-md-6">
+                               <a data-bs-toggle="modal" data-bs-target="#deleteProduct-{{$product->id}}"> <button type="submit" class="btn btn-primary">
+                                    {{ __('Delete Course') }}
+                                </button></a>
+                            </div>
+                    </td>
+                @endif
+            </tr>
+            <div class="modal fade" id="deleteProduct-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Delete Course</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <h4> Are you sure want to delete the Course?</h4>
                         </div>
                         <form action="{{ route('delete.product', $product->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Delete Product') }}
-                                </button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn bg-gradient-danger">Delete course</button>
                             </div>
                         </form>
-                    </td>
-                @endif
-            </tr>
+                    </div>
+                </div>
+            </div>
+
         @endforeach
         </body>
     </table>

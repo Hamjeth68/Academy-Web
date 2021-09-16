@@ -99,21 +99,25 @@
                 <h3>Contact<span> Us</span></h3>
             </div>
 
-            <form method="post" class="card mt-3 px-3" style="padding: 20px;">
+            <form method="post" action="{{url('contact-email')}}" class="card mt-3 px-3" style="padding: 20px;">
+                @csrf
                 <h3>Drop Us a Message</h3>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" value="" />
+                        <div class="mb-4 font-medium text-sm text-green-600">
+                            @include('flash-message')
                         </div>
                         <div class="form-group">
-                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *" value="" />
+                            <input type="text" name="txtName" class="form-control" placeholder="Your Name *" required/>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *" value="" />
+                            <input type="email" name="txtEmail" class="form-control" placeholder="Your Email *"  required/>
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="btnSubmit" class="btnContactSubmit" value="Send Message" />
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *"  required/>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btnContactSubmit">Submit</button>
                         </div>
                     </div>
                     <div class="col-md-6">

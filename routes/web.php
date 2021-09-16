@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [App\Http\Controllers\PageController::class, 'courseLawmaPage']);
+
+Route::get('/home', function () {
     return view('home');
 });
 
@@ -32,7 +34,7 @@ Route::post('/stdregister', [App\Http\Controllers\Auth\RegisterController::class
 Route::get('/verifyUser/{uuid}', [App\Http\Controllers\Auth\RegisterController::class, 'verifyUserAccount'])->name('verify-user');
 
 Route::get('/home-two', [App\Http\Controllers\PageController::class, 'coursePage']);
-Route::get('/lawma1', [App\Http\Controllers\PageController::class, 'courseLawmaPage']);
+Route::get('/lawma-Homepage', [App\Http\Controllers\PageController::class, 'courseLawmaPage']);
 
 
 Route::get('/why1', function () {
@@ -43,9 +45,11 @@ Route::get('/web', function () {
     return view('webinars');
 });
 
-Route::get('/contact1', function () {
+Route::get('/contact-us', function () {
     return view('contact');
 });
+Route::post('/contact-email', [App\Http\Controllers\HomeController::class, 'contactUsEmail']);
+
 
 Route::get('/news1', function () {
     return view('news');

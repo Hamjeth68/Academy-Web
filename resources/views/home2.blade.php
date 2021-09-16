@@ -95,7 +95,7 @@
             @foreach($products as $product)
             <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
                 <div class="text-on-image-con">
-                    <img src="{{asset('img/Group 4453.png')}}" style="" class="img-fluid" alt="" srcset="">
+                    <img src="{{asset('image/'.$product->image)}}" style="" class="img-fluid" alt="" srcset="">
                     <div class="text-con">
                         <h4><span class="greentitle">{{ $product->p_title }}</span></h4>
                         {{-- <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}

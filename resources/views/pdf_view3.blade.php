@@ -60,7 +60,7 @@
             <div id="company" style="text-align: right; margin-top: -100px;">
                 <h2 class="name" style="line-height: 1px">Safe Enviro Academy</h2>
                 <div>69/66 Hatton Garden,Fifth Floor Suites 23, <br>London EC1N 8LE</div>
-                <div>SafeEnviro@gmail.com</div>
+                <div>admin@lawma.academy</div>
             </div>
         </div>
     </div>

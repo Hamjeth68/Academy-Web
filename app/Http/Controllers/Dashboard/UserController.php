@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\CoursePurchased;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use PDF;
@@ -14,9 +16,33 @@ class UserController extends Controller
 {
 
     public $user;
-    public function index()
+    public function index(Request $request)
     {
         $user = User::where('user_type', '1')->get();
+
+        if($request->input('query')){
+
+            $search = $request->input('query');
+//            $date = CoursePurchased::where('reference_number', 'LIKE', "%{$search}%")->first();
+
+            $email = User::where('email', 'LIKE', "%{$search}%")->first();
+
+            $name = User::where('name', 'LIKE', "%{$search}%")->first();
+            if($name) {
+                $user = User::query()
+                    ->where('name', 'LIKE', "%{$name->name}%")
+                    ->get();
+            }elseif ($email) {
+                $user = User::query()
+                    ->where('email', 'LIKE', "%{$email->email}%")
+                    ->get();
+            } else {
+                $user = User::query()
+                    ->where('created_at', 'LIKE', "%{$search}%")
+                    ->get();
+            }
+        }
+
         return view('dashboard.users', [
             'user' => $user,
         ]);

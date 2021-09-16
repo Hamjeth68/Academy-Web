@@ -29,6 +29,9 @@
                <h3> Your Total amount is £{{ number_format($total_amount,2) }} </h3>
             </div>
             <div class="card">
+                <div class="mb-4 font-medium text-sm text-green-600">
+                    @include('flash-message')
+                </div>
                 <form action="{{route('credit-card')}}"  method="post" id="payment-form">
                     @csrf
                     <div class="form-group">
@@ -113,7 +116,6 @@
             }
         })
             .then(function(result) {
-                console.log(result);
                 if (result.error) {
                     // Inform the user if there was an error.
                     var errorElement = document.getElementById('card-errors');

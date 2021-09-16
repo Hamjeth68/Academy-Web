@@ -47,6 +47,10 @@
                 {{--            <a href="#" class="instagram"><i class="icofont-instagram"></i></a>--}}
                 {{--            <a href="#" class="skype"><i class="icofont-skype"></i></a>--}}
                 {{--            <a href="#" class="linkedin"><i class="icofont-linkedin"></i></i></a>--}}
+                    <a href="https://moodle.lawma.academy/login" class="btn ml-3" style="padding: 12px;
+    background: #53c10c;
+    color: white;
+    border-radius: 8px;">Student Portal</a>
         </div>
     </div>
 </div>
@@ -57,7 +61,7 @@
 
     {{--        <h1 class="logo mr-auto"><a href="index.html">BizLand<span>.</span></a></h1>--}}
     <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="{{ url('/') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
+        <a href="{{ url('/home') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
@@ -71,7 +75,7 @@
                         {{--                        <li><a href="{{url('/contact1')}}">Contact Us</a></li>--}}
                     </ul>
                 </li>
-                <li><a href="{{url('/lawma1')}}">Lawma Academy</a></li>
+                <li><a href="{{url('/lawma-Homepage')}}">Lawma Academy</a></li>
                 <li class="drop-down"><a href="">About</a>
                     <ul>
                         {{--                        <li><a href="{{url('/news1')}}">News</a></li>--}}
@@ -82,7 +86,7 @@
                         {{--                        <li><a href="#">Sustainability</a></li>--}}
                         {{--                        <li><a href="#">Corporate Identity</a></li>--}}
                         {{--                        <li><a href="{{url('/support1')}}">Support the Academy</a></li>--}}
-                        {{-- <li><a href="{{url('/contact1')}}">Contact Us</a></li> --}}
+                         <li><a href="{{url('/contact-us')}}">Contact Us</a></li>
                     </ul>
                 </li>
                 <li class="drop-down"><a href="#">Business & Partners</a>

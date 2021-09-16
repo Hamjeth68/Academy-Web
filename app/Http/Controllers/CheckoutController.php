@@ -51,6 +51,7 @@ class CheckoutController extends Controller
                 $refNumber = 'LM' . str_pad($target_entry->id + 1, 8, "0", STR_PAD_LEFT);
             }
 
+            $error_message = null;
 
             try
             {
@@ -63,16 +64,44 @@ class CheckoutController extends Controller
 
 //                Session::put('payment_completed', true);
             }
-            catch (ApiErrorException $e)
-            {
-
+            catch(\Stripe\Exception\CardException $e) {
+                // Since it's a decline, \Stripe\Exception\CardException will be caught
+                $error_message = $e->getError()->message;
+            } catch (\Stripe\Exception\RateLimitException $e) {
+                // Too many requests made to the API too quickly
+                $error_message = $e->getError()->message;
+            } catch (\Stripe\Exception\InvalidRequestException $e) {
+                // Invalid parameters were supplied to Stripe's API
+                $error_message = $e->getError()->message;
+            } catch (\Stripe\Exception\AuthenticationException $e) {
+                // Authentication with Stripe's API failed
+                // (maybe you changed API keys recently)
+                $error_message = $e->getError()->message;
+            } catch (\Stripe\Exception\ApiConnectionException $e) {
+                // Network communication with Stripe failed
+                $error_message = $e->getError()->message;
+            } catch (\Stripe\Exception\ApiErrorException $e) {
+                // Display a very generic error to the user, and maybe send
+                // yourself an email
+                $error_message = $e->getError()->message;
+            } catch (Exception $e) {
+                // Something else happened, completely unrelated to Stripe
+                $error_message = 'Something went wrong';
             }
 
-            $intent = $payment_intent->client_secret;
+            if (!is_null($error_message))
+            {
+                return back()->with('error', $error_message);
+            }
+            else
+            {
+                $intent = $payment_intent->client_secret;
 
-            Session::put('ref_No', $refNumber);
+                Session::put('ref_No', $refNumber);
 
-            return view('credit-card', compact('intent'))->with('total_amount', (float)$totalamount);
+                return view('credit-card', compact('intent'))->with('total_amount', (float)$totalamount);
+            }
+
         }else {
             return back();
         }

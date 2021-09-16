@@ -1,43 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>SafeEnviro</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/appFrontend.css') }}" rel="stylesheet">
-
-    <!-- Favicons -->
-    <link href="{{ asset('img/AcLogo.png') }}" rel="icon">
-    <link href="{{ asset('img/AcLogo.png') }}" rel="apple-touch-icon">
-
-    <!-- Google Fonts -->
-    {{--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">--}}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/icofont/icofont.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/venobox/venobox.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/aos/aos.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" integrity="sha512-Velp0ebMKjcd9RiCoaHhLXkR1sFoCCWXNp6w4zj1hfMifYB5441C+sKeBl/T/Ka6NjBiRfBBQRaQq65ekYz3UQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css" integrity="sha512-nNlU0WK2QfKsuEmdcTwkeh+lhGs6uyOxuUs+n+0oXSYDok5qy0EI0lt01ZynHq6+p/tbgpZ7P+yUb+r71wqdXg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-
-
-</head>
+@section('content')
 <style>
     body {
         font-family: "Lato", sans-serif !important;
@@ -222,112 +185,6 @@
     }
 </style>
 
-<body>
-
-<!-- ======= Top Bar ======= -->
-<div id="topbar" class="d-lg-flex align-items-center fixed-top" style="background: #f4772e">
-    <div class="container d-flex">
-        <div class="contact-info mr-auto">
-            {{--            <i class="icofont-envelope"></i> <a href="mailto:contact@example.com">contact@example.com</a>--}}
-            {{--            <i class="icofont-phone"></i> +1 5589 55488 55--}}
-        </div>
-        <div class="social-links">
-            {{--            @if(auth()->check() && auth()->user()->user_type !== '1' || (!auth()->check()))--}}
-            {{--                <a href="{{url('/welcome')}}" class="text-black-50 font-weight-bold">Staff</a>--}}
-            {{--            @endif--}}
-            @if(auth()->check() && auth()->user()->user_type !== '1' )
-                <a href="{{ url('/dashboard')}}" class="text-black-50 font-weight-bold">Dashboard</a>
-            @endif
-            @if(auth()->check() && auth()->user()->user_type == '1')
-                <a href="{{ url('/stdEdit/'.auth()->user()->id) }}" class="text-black-50 font-weight-bold">Profile</a>
-            @endif
-            <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Alumni</a>
-            <a href="https://moodle.org/login/index.php" class="text-black-50 font-weight-bold">Student</a>
-            @if(!auth()->check())
-                <a href="{{url('/stdregister')}}" class="text-black-50 font-weight-bold">Register</a>
-            @endif
-            @if(auth()->check())
-
-                {{--<a href="{{ route('logout') }}" method="POST" class="text-black-50 font-weight-bold">Logout</a>--}}
-                <form method="POST" action="{{ route('logout') }}" class="d-inline-block">
-
-                    @csrf
-                    <a href="{{ route('logout') }}"
-                       class="text-black-50 font-weight-bold"
-                       onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </a>
-                </form>
-
-            @else
-                <a href="{{url('/stdlogin')}}" class="text-black-50 font-weight-bold">Login</a>
-            @endif
-{{--            <a><input class="searchtype px-2" type="search" placeholder="Search" aria-label="Search"></a>--}}
-{{--            <a href="" class="text-black-50 font-weight-bold px-2"><i class="icofont-ui-search"></i></a>--}}
-        </div>
-    </div>
-</div>
-
-<!-- ======= Header ======= -->
-<header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center">
-    {{--        <h1 class="logo mr-auto"><a href="index.html">BizLand<span>.</span></a></h1>--}}
-    <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="{{ url('/') }}" class="logo mr-auto"><img src={{ asset('img/acedemy.png') }} alt=""></a>
-
-        <nav class="nav-menu d-none d-lg-block">
-            <ul>
-                <li class="drop-down"><a href="">Learn With Us</a>
-                    <ul>
-                        <li><a href="{{url('/why1')}}">Why SafeEnviro Academy</a></li>
-                        <li><a href="{{url('/home-two')}}">Courses & Fees </a></li>
-                        <li><a href="{{url('/personal-development')}}">Continuing Professional Development </a></li>
-                    <!--<li><a href="{{url('/inspiring-student')}}">Inspiring Students </a></li>-->
-                        {{--                        <li><a href="{{url('/web')}}">Webinars & Upcoming Events </a></li>--}}
-                        {{--                        <li><a href="{{url('/contact1')}}">Contact Us</a></li>--}}
-                    </ul>
-                </li>
-                <li><a href="{{url('/lawma1')}}">Lawma Academy</a></li>
-                <li class="drop-down"><a href="">About</a>
-                    <ul>
-                        {{--                        <li><a href="{{url('/news1')}}">News</a></li>--}}
-                        <li><a href="{{url('/commitment1')}}">Our Commitment to the Environment</a></li>
-                        {{--                        <li><a href="#">Academy at a Glance</a></li>--}}
-                        {{--                        <li><a href="#">Professional Services</a></li>--}}
-                        {{--                        <li><a href="#">Social Responsibility</a></li>--}}
-                        {{--                        <li><a href="#">Sustainability</a></li>--}}
-                        {{--                        <li><a href="#">Corporate Identity</a></li>--}}
-                        {{--                        <li><a href="{{url('/support1')}}">Support the Academy</a></li>--}}
-                        <li><a href="{{url('/contact1')}}">Contact Us</a></li>
-                    </ul>
-                </li>
-                <li class="drop-down"><a href="{{url('/lawma1')}}">Business & Partners</a>
-                    <ul>
-                        {{--                        <li><a href="{{url('/business1')}}">Business Services</a></li>--}}
-                        <li><a href="{{url('/partnership1')}}">Partnership & Collaboration</a></li>
-                        {{--                        <li><a href="{{url('/Research1')}}">Research & Innovation</a></li>--}}
-                        {{--                        <li><a href="#">About</a></li>--}}
-                        {{--                        <li><a href="#">Continuing Professional</a></li>--}}
-                        {{--                        <li><a href="#">Development</a></li>--}}
-                    </ul>
-                </li>
-{{--                <li class="drop-down"><a href="">Support Us</a>--}}
-{{--                    <ul>--}}
-{{--                        <li><a href="{{url('/donate1')}}">Donate Now</a></li>--}}
-{{--                    <!--<li><a href="{{url('/Volunteer1')}}">Volunteer</a></li>-->--}}
-{{--                        --}}{{--                        <li><a href="#">Transforming Lives</a></li>--}}
-{{--                        --}}{{--                        <li><a href="#">Finding Solutions</a></li>--}}
-{{--                        --}}{{--                        <li><a href="#">Inspiring Students</a></li>--}}
-{{--                        --}}{{--                        <li><a href="#">Get Involved</a></li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-            </ul>
-        </nav><!-- .nav-menu -->
-
-    </div>
-</header><!-- End Header -->
-
 <!-- ======= Hero Section ======= -->
 <section id="hero" class="d-flex align-items-center">
     <div class="container text-center" data-aos="zoom-out" data-aos-delay="100">
@@ -348,7 +205,7 @@
             @foreach($products as $product)
                 <div class="col-md-6 col-lg-4 text-center" style="padding: 50px; padding-top:10px" data-aos="fade-down" data-aos-delay="300">
                     <div class="text-on-image-con">
-                        <img src="{{asset('img/Group 4453.png')}}" style="" class="img-fluid" alt="" srcset="">
+                        <img src="{{asset('image/'.$product->image)}}" style="" class="img-fluid" alt="" srcset="">
                         <div class="text-con">
                             <h4>{{ $product->p_title }}<span class="greentitle"></span></h4>
                             {{-- <p>At SafeEnviro academy we offer the highest quality of academic  and professional experience in the Waste</p>--}}
@@ -741,84 +598,8 @@
 
 </main><!-- End #main -->
 
-<!-- ======= Footer ======= -->
-<footer id="footer">
-
-    <div class="footer-top">
-        <div class="container">
-            <div class="row">
-                <div class="row col-12 mb-4">
-                    <a href="{{ url('/') }}" class="logo ml-2"><img src={{ asset('img/acedemy.png') }} alt=""></a>
-                </div>
-                <div class="col-lg-5 col-md-6 footer-contact">
-                    <p>At SafeEnviro Academy we offer the highest quality of academic and professional experience in the Waste, Resource & Environmental Industry whilst working closely with some of the leading professional membership organizations in the sector.
-                        By studying with us, you will be part of a community driven by a desire to create a safer environment for the future.
-                    </p>
-                </div>
-
-                {{--                <div class="col-lg-1 col-md-6 footer-links link">--}}
-                {{--                    <h4>Links</h4>--}}
-                {{--                    <ul>--}}
-                {{--                        <li></i> <a href="#">Policy</a></li>--}}
-                {{--                        <li></i> <a href="#">Privacy</a></li>--}}
-                {{--                        <li></i> <a href="#">Cookies</a></li>--}}
-                {{--                    </ul>--}}
-                {{--                </div>--}}
-
-                <div class="col-lg-3 col-md-6 footer-links address">
-                    <h4>Academy Address</h4>
-                    <p>
-                        69/66 Hatton Garden, <br>
-                        Fifth Floor Suites 23, <br>
-                        London EC1N 8LE
-                    </p>
-                </div>
-
-                <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Social Media</h4>
-                    <div class="social-links mt-3">
-                        <a href="#" class=""><i class="icofont-linkedin"></i></a>
-                        <a href="#" class=""><i class="icofont-twitter"></i></a>
-                        <a href="#" class=""><i class="icofont-youtube"></i></a>
-                        <a href="#" class=""><i class="icofont-facebook"></i></a>
-                        <a href="#" class=""><i class="icofont-instagram"></i></a>
-                        <a href="#" class=""><i class="icofont-whatsapp"></i></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="container py-4">
-        <div class="col-lg-12 col-md-auto col-sm-6 copyright text-center">
-            &copy; Copyright <strong><span>Adage Digital</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            {{--            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>--}}
-        </div>
-    </div>
-</footer><!-- End Footer -->
-
 <div id="preloader"></div>
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+@endsection
 
-<!-- Vendor JS Files -->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('vendor/jquery.easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ asset('vendor/waypoints/jquery.waypoints.min.js') }}"></script>
-<script src="{{ asset('vendor/counterup/counterup.min.js') }}"></script>
-<script src="{{ asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-<script src="{{ asset('vendor/venobox/venobox.min.js') }}"></script>
-<script src="{{ asset('vendor/aos/aos.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.js" integrity="sha512-j7/1CJweOskkQiS5RD9W8zhEG9D9vpgByNGxPIqkO5KrXrwyDAroM9aQ9w8J7oRqwxGyz429hPVk/zR6IOMtSA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- Template Main JS File -->
-<script src="{{ asset('js/main.js') }}"></script>
 
-</body>
-
-</html>

@@ -23,19 +23,31 @@ class ProductController extends Controller
 
     public function createProduct(Request $request)
     {
-        // dd($request);
         $request->validate([
             'p_title' => 'required|max:191|string',
             'p_name' => 'required|max:191|string',
             'p_description' => 'required|max:191|string',
             'p_amount' =>  'numeric',
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|required|image|max:2048',
         ]);
+
+
+        if ($image = $request->file('image'))
+        {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+
 
         Product::create([
             'p_title' => $request->p_title,
             'p_name' => $request->p_name,
             'p_description' => $request->p_description,
             'p_amount' => $request->p_amount,
+            'image' => $input['image'],
+
         ]);
         return Redirect::to('/dashboard/products')->with('success', 'Product Created successfully');
     }
@@ -52,16 +64,33 @@ class ProductController extends Controller
 
         $products = Product::where('id', $id)->first();
 
-        $data = ([
-            'p_title' => $request->p_title,
-            'p_name' => $request->p_name,
-            'p_description' => $request->p_description,
-            'p_amount' => $request->p_amount,
-        ]);
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $products['image'] = "$profileImage";
+
+            $data = ([
+                'p_title' => $request->p_title,
+                'p_name' => $request->p_name,
+                'p_description' => $request->p_description,
+                'p_amount' => $request->p_amount,
+                'image' => "$profileImage",
+            ]);
+
+        }else{
+            $data = ([
+                'p_title' => $request->p_title,
+                'p_name' => $request->p_name,
+                'p_description' => $request->p_description,
+                'p_amount' => $request->p_amount,
+                'image' => $products['image'],
+            ]);
+        }
 
         $products->update($data);
 
-        return redirect()->to('/dashboard/products');
+        return redirect()->to('/dashboard/products')->with('success', 'Product Updated successfully');
     }
 
     public function deleteProduct(Product $data, $id)
@@ -73,7 +102,7 @@ class ProductController extends Controller
         ]);
 
         if ($data->update($is_deleted)) {
-            return redirect()->to('/dashboard/products');
+            return redirect()->to('/dashboard/products')->with('success', 'Product Deleted successfully');
         } else {
             return redirect()->to('/dashboard/products')->with('error');
         }

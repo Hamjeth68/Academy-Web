@@ -16,6 +16,7 @@ class Product extends Model
         'p_name',
         'p_description',
         'p_amount',
+        'image',
         'is_deleted',
     ];
     protected $dates = ['created_at', 'updated_at'];
@@ -25,5 +26,5 @@ class Product extends Model
     //     return $this->belongsTo(\App\Models\Student::class);
     // }
 
-    
+
 }

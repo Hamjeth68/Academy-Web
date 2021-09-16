@@ -206,7 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 992px) {
   #header {
     padding: 15px;
-    top: 1rem;
+    top: 3rem;
   }
   #header .logo {
     font-size: 28px;
@@ -214,7 +214,7 @@ h1, h2, h3, h4, h5, h6 {
 
   #topbar {
     background: #f4772e;
-    height: 30px;
+    height: 50px;
     font-size: 14px;
     transition: all 0.5s;
     color: #000000;
@@ -225,7 +225,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   button.mobile-nav-toggle.d-lg-none {
-        top: 2rem;
+        top: 3rem;
   }
 }
 
@@ -476,7 +476,7 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 105vh;
+  height: 130vh;
   background: url("../img/Group-4454.png") top left;
   background-size: cover;
   position: relative;
@@ -508,7 +508,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 992px) {
   #hero .container {
-    padding-top: 58px;
+    padding-top: 125px;
   }
 }
 
@@ -1963,6 +1963,23 @@ section#pagehead {
 
     .searchtype {
         max-width: 6rem;
+    }
+}
+
+@media (min-width:463px) and (max-width:768px) {
+    #topbar {
+        background: #f4772e;
+        height: 30px;
+        font-size: 14px;
+        transition: all 0.5s;
+        color: #000000;
+    }
+    #header {
+        padding: 15px;
+        top: 1rem;
+    }
+    button.mobile-nav-toggle.d-lg-none {
+        top: 2rem;
     }
 }
 
